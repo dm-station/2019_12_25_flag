@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":3,
+    "selecteID":6,
     "props":{"width":750,"sceneColor":"#000000","height":1500},
     "nodeParent":-1,
     "label":"View",
@@ -43,7 +43,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":613,"x":334,"var":"load_photo","skin":"loading/load_photo.png"},
+            "props":{"y":613,"x":375,"var":"load_photo","skin":"loading/load_photo.png","pivotX":41},
             "nodeParent":1,
             "label":"Image(load_photo)",
             "isDirectory":false,

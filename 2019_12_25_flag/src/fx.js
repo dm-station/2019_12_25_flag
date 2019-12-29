@@ -7,6 +7,10 @@ document.addEventListener("WeixinJSBridgeReady", function () {
 	});
 }, false);
 
+document.body.addEventListener('touchmove', function (e) {
+  e.preventDefault();
+}, {passive: false});
+
 var audio=document.getElementById("audio");
 audio.addEventListener('ended', function () {
 	audio.play();
@@ -42,14 +46,13 @@ $.ajax({
 	
 // 微信分享
 function updata(){
-	console.log('urlTitle',urlTitle)
 	wx.ready(function (e) {
 		// wxReady();
 		wx.onMenuShareTimeline({//分享到朋友圈
-			title:'解锁你的财富潜能',
-			desc: '生财指南在此，猛戳~',
+			title:'2019年的flag向您发起打脸攻击',
+			desc: '还能怎么办？Flag接着立呗！',
 			link: urlTitle,
-			imgUrl: 'http://cdn.campaign.realh5.cn/2019/spdb/share.jpg',
+			imgUrl: 'http://cdn.campaign.realh5.cn/2019/flag/share.jpg',
 			success: function () {
 				// _hmt.push(['_trackEvent', '微信分享', '朋友圈', '成功']);
 				// _czc.push(['_trackEvent', '微信分享', '朋友圈','成功'])
@@ -63,10 +66,10 @@ function updata(){
 		})
 		
 		wx.onMenuShareAppMessage({//分享好友
-			title: '解锁你的财富潜能',
-			desc: '生财指南在此，猛戳~',
+			title: '《2019跑者打脸现场》',
+			desc: '还能怎么办？Flag接着立呗！',
 			link: urlTitle,
-			imgUrl: 'http://cdn.campaign.realh5.cn/2019/spdb/share.jpg',
+			imgUrl: 'http://cdn.campaign.realh5.cn/2019/flag/share.jpg',
 			success: function () {
 				// 用户确认分享后执行的回调函数
 				// _hmt.push(['_trackEvent', '微信分享', '好友', '成功']);

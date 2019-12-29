@@ -113,8 +113,14 @@ P CF2DD5CC p5_t9.png
 D p6
 P 204072DB next.png
 P D0797629 p6_change.png
-P ED85BEAA p6_close.png
+P 93D29FC5 p6_close.png
 P F5894D81 p6_icon.png
+P 99B93C2F p6_icon1.png
+P 679EEAFD p6_icon2.png
+P 583AADA8 p6_icon3.png
+P 7A37DAAA p6_icon4.png
+P DB6DB938 p6_icon5.png
+P 41520791 p6_icon6.png
 P 75A8083E p6_input.png
 P 983547AD p6_logo.png
 P 6FC2DF2D p6_mask.png
@@ -133,6 +139,10 @@ P 5989DD7F p6list_t5.png
 P 56960F0F p6list_t6.png
 P BDA71F88 textinput.png
 D p7
+P BFFC1A76 count_0.png
+P A4107017 count_1.png
+P 30189889 count_2.png
+P 2972E3A9 count_3.png
 P 7754F648 p7_bg1.png
 P F5B785DD p7_bg2.png
 P FDCF954E p7_btn1.png
