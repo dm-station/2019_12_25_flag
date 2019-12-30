@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":2,
+    "selecteID":32,
     "props":{"width":750,"sceneColor":"#000000","height":1500},
     "nodeParent":-1,
     "label":"View",
@@ -28,7 +28,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":612,"x":30,"skin":"p7/p7_bg1.png","alpha":0.1},
+            "props":{"y":594,"x":53,"skin":"p8/p8_bg1.png","alpha":0.1},
             "nodeParent":1,
             "label":"Image",
             "isDirectory":false,
@@ -41,8 +41,63 @@
         },
         {
             "x":15,
+            "type":"Image",
+            "props":{"y":176,"x":96,"width":168,"var":"photo","skin":"p6/p6_photo.png","height":169},
+            "nodeParent":1,
+            "label":"Image(photo)",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":38,
+            "child":[
+                {
+                    "type":"Image",
+                    "props":{"y":0,"x":0,"skin":"p6/p6_mask.png","renderType":"mask"},
+                    "nodeParent":38,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":41,
+                    "child":[
+                        ]
+                }],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":176,"x":96,"width":168,"skin":"p6/p6_photo_bg.png","height":169},
+            "nodeParent":1,
+            "label":"Image",
+            "isOpen":true,
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":39,
+            "child":[
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":313,"x":159,"skin":"p6/p6_photos.png"},
+            "nodeParent":1,
+            "label":"Image",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":40,
+            "child":[
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
             "type":"Label",
-            "props":{"y":238,"x":372,"width":210,"var":"name","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":26,"font":"SimSun","color":"#333333"},
+            "props":{"y":183,"x":378,"width":239,"var":"name","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":26,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(name)",
             "isDirectory":false,
@@ -55,7 +110,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":204,"x":262,"var":"p8_t1","skin":"p8/p8_t1.png"},
+            "props":{"y":130,"x":253,"var":"p8_t1","skin":"p8/p8_t1.png"},
             "nodeParent":1,
             "label":"Image(p8_t1)",
             "isDirectory":false,
@@ -70,62 +125,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":227,"x":121,"width":153,"var":"photo","skin":"p6/p6_photo.png","height":153},
-            "nodeParent":1,
-            "label":"Image(photo)",
-            "isOpen":false,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":6,
-            "child":[
-                {
-                    "type":"Image",
-                    "props":{"y":0,"x":0,"width":153,"skin":"p6/p6_mask.png","renderType":"mask","height":153},
-                    "nodeParent":6,
-                    "label":"Image",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":23,
-                    "child":[
-                        ]
-                }],
-            "$HIDDEN":false
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":227,"x":121,"skin":"p6/p6_photo_bg.png"},
-            "nodeParent":1,
-            "label":"Image",
-            "isOpen":true,
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":7,
-            "child":[
-                ],
-            "$HIDDEN":false
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":428,"x":119,"skin":"p7/p7_bg2.png"},
-            "nodeParent":1,
-            "label":"Image",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":8,
-            "child":[
-                ],
-            "$HIDDEN":false
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":494,"x":146,"var":"p7_n1","skin":"p7/p7_num1.png"},
+            "props":{"y":481,"x":83,"var":"p7_n1","skin":"p7/p7_num1.png"},
             "nodeParent":1,
             "label":"Image(p7_n1)",
             "isDirectory":false,
@@ -139,7 +139,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":580,"x":146,"var":"p7_n2","skin":"p7/p7_num2.png"},
+            "props":{"y":596,"x":81,"var":"p7_n2","skin":"p7/p7_num2.png"},
             "nodeParent":1,
             "label":"Image(p7_n2)",
             "isDirectory":false,
@@ -153,7 +153,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":666,"x":146,"var":"p7_n3","skin":"p7/p7_num3.png"},
+            "props":{"y":711,"x":83,"var":"p7_n3","skin":"p7/p7_num3.png"},
             "nodeParent":1,
             "label":"Image(p7_n3)",
             "isDirectory":false,
@@ -167,7 +167,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":751,"x":146,"var":"p7_n4","skin":"p7/p7_num4.png"},
+            "props":{"y":826,"x":83,"var":"p7_n4","skin":"p7/p7_num4.png"},
             "nodeParent":1,
             "label":"Image(p7_n4)",
             "isDirectory":false,
@@ -181,7 +181,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":839,"x":146,"var":"p7_n5","skin":"p7/p7_num5.png"},
+            "props":{"y":941,"x":83,"var":"p7_n5","skin":"p7/p7_num5.png"},
             "nodeParent":1,
             "label":"Image(p7_n5)",
             "isDirectory":false,
@@ -195,7 +195,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":923,"x":146,"var":"p7_n6","skin":"p7/p7_num6.png"},
+            "props":{"y":1056,"x":83,"var":"p7_n6","skin":"p7/p7_num6.png"},
             "nodeParent":1,
             "label":"Image(p7_n6)",
             "isDirectory":false,
@@ -209,7 +209,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":504,"x":267,"width":349,"var":"p7_t1","text":"实现人生第一个全马","overflow":"hidden","height":47,"fontSize":25,"font":"SimSun","color":"#333333"},
+            "props":{"y":495,"x":219,"width":480,"var":"p7_t1","text":"实现人生第一个全马","overflow":"hidden","height":47,"fontSize":32,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(p7_t1)",
             "isDirectory":false,
@@ -222,7 +222,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":591,"x":267,"width":349,"var":"p7_t2","text":"健身房每周至少打卡三次","styleSkin":"loading/label.png","overflow":"visible","height":47,"fontSize":25,"font":"SimSun","color":"#333333"},
+            "props":{"y":610,"x":219,"width":480,"var":"p7_t2","text":"健身房每周至少打卡三次","styleSkin":"loading/label.png","overflow":"visible","height":47,"fontSize":32,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(p7_t2)",
             "isDirectory":false,
@@ -235,7 +235,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":676,"x":267,"width":349,"var":"p7_t3","text":"走出国门，挑战外国马拉松","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":25,"font":"SimSun","color":"#333333"},
+            "props":{"y":725,"x":219,"width":480,"var":"p7_t3","text":"走出国门，挑战外国马拉松","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":32,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(p7_t3)",
             "isDirectory":false,
@@ -248,7 +248,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":761,"x":267,"width":349,"var":"p7_t4","text":"买专业䨻跑鞋，跑得更快","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":25,"font":"SimSun","color":"#333333"},
+            "props":{"y":840,"x":219,"width":480,"var":"p7_t4","text":"买专业䨻跑鞋，跑得更快","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":32,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(p7_t4)",
             "isDirectory":false,
@@ -261,7 +261,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":848,"x":267,"width":349,"var":"p7_t5","text":"每年都参加马拉松，跑到80岁！ ","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":25,"font":"SimSun","color":"#333333"},
+            "props":{"y":955,"x":219,"width":480,"var":"p7_t5","text":"每年都参加马拉松，跑到80岁！ ","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":32,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(p7_t5)",
             "isDirectory":false,
@@ -274,7 +274,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":934,"x":267,"width":349,"var":"p7_t6","text":"拔草李宁全套最新款跑训产品 ","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":25,"font":"SimSun","color":"#333333"},
+            "props":{"y":1070,"x":219,"width":480,"var":"p7_t6","text":"拔草李宁全套最新款跑训产品 ","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":32,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(p7_t6)",
             "isDirectory":false,
@@ -287,7 +287,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":1055,"x":119,"skin":"p8/p8_copy.png"},
+            "props":{"y":1038,"x":82,"skin":"p8/p8_copy.png"},
             "nodeParent":1,
             "label":"Image",
             "isDirectory":false,
@@ -301,7 +301,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":1101,"x":326,"var":"p8_save","skin":"p8/p8_save.png"},
+            "props":{"y":1136,"x":323,"var":"p8_save","skin":"p8/p8_save.png"},
             "nodeParent":1,
             "label":"Image(p8_save)",
             "isDirectory":false,
@@ -310,12 +310,12 @@
             "compId":27,
             "child":[
                 ],
-            "$HIDDEN":false
+            "$HIDDEN":true
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":1065,"x":291,"var":"p8_saves","skin":"p8/p8_saves.png"},
+            "props":{"y":1117,"x":304,"var":"p8_saves","skin":"p8/p8_saves.png"},
             "nodeParent":1,
             "label":"Image(p8_saves)",
             "isDirectory":false,
@@ -329,7 +329,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":1301,"x":286,"var":"p6_logo","skin":"p6/p6_logo.png"},
+            "props":{"y":1370,"x":279,"var":"p6_logo","skin":"p6/p6_logo.png"},
             "nodeParent":1,
             "label":"Image(p6_logo)",
             "isDirectory":false,
@@ -337,7 +337,8 @@
             "hasChild":false,
             "compId":33,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         }],
     "animations":[
         {

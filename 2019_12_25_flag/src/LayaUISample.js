@@ -26,6 +26,9 @@ document.body.addEventListener('focusout', function() {
 		window.scrollTo(0,currentPosition);//页面向上滚动
 		currentPosition+=speed; //speed变量
 		window.scrollTo(0,currentPosition);//页面向下滚动
+
+		 document.body.scrollTop = 0
+    	 document.documentElement.scrollTop = 0
 		clearInterval(timer);
 	},1);
 })
@@ -111,30 +114,30 @@ var hideArr=[];
 //flag唯一ID
 var id='';
 //海报页文案id
-var posterId=Math.floor(Math.random()*5)+1
+var posterId=Math.floor(Math.random()*6)+1
 
 var p6Arr=[
-	'跑人生第一个全马',
-	'跑人生第一个半马',
+	'全马PB',
 	'健身房每周打卡3次',
-	'开始挑战国际6大满贯',
+	'全年减重20斤',
+	'自我突破，开始尝试跑步',
+	'每天跑五公里',
+	'跑人生第一个全马',
 	'完成国内5大满贯马拉松',
 	'练出马甲线',
-	'全年减重20斤',
 	'跑一场国外马拉松',
-	'获得世界马拉松大满贯六星奖牌',
-	'全马PB',
-	'每天跑五公里',
 	'每日步数突破1万步',
 	'月跑量过100公里',
 	'月跑量过200公里',
 	'月跑量过300公里',
+	'开始挑战国际6大满贯',
 	'打败赖床症，6点起床',
 	'买专业䨻跑鞋，跑得更快',
 	'马拉松跑进300',
 	'找到同样爱跑步的另一半',
 	'全家一起参加马拉松',
-	'自我突破，开始尝试跑步',
+	'跑人生第一个半马',
+	'获得世界马拉松大满贯六星奖牌',
 	'坚持每年5场马拉松',
 	'和爱人一起跑个全马',
 	'10公里突破1小时',
@@ -146,23 +149,13 @@ var p6Arr=[
 	'年跑量突破2000公里',
 	'年跑量突破3000公里',
 	'佛系坚持跑步',
+	'练出马甲线',
 	'每日步数突破1万步',
 	'找到同样爱跑步的另一半',
-	'全年减重20斤',
-	'月跑量过300公里',
+	'打败赖床症，6点起床',
 ]
 
 var saveArr=[]
-
-var tempArr=[
-	{name:'p6list_b1',pos:596,index:0,text:''},
-	{name:'p6list_b2',pos:666,index:1,text:''},
-	{name:'p6list_b3',pos:736,index:2,text:''},
-	{name:'p6list_b4',pos:806,index:3,text:''},
-	{name:'p6list_b5',pos:876,index:4,text:''},
-	{name:'p6list_b6',pos:846,index:5,text:''},
-]
-var tempIndex=0
 
 function p1() {
 	p1UI.super(this);
@@ -212,6 +205,14 @@ function p1() {
 	})
 }
 
+function faceTween(obj,sc,time1,time2){
+	obj.scale(sc,sc)
+	obj.alpha=0
+
+	Tween.to(obj,{scaleX:1,scaleY:1}, time1, Ease.backOut);
+	Tween.to(obj,{alpha:1}, time2, Ease.linearIn);
+}
+
 function p2() {
 	p2UI.super(this);
 	var self = this;
@@ -254,8 +255,11 @@ function p2() {
 
 		self.p2s_t1.scale(0,0);
 		self.p2s_t2.scale(0,0);
-		Tween.to(self['p2s_t1'],{scaleX:1,scaleY:1}, 700, Ease.backOut, null, 300+0*200);
-		Tween.to(self['p2s_t2'],{scaleX:1,scaleY:1}, 700, Ease.backOut, null, 300+1*400);
+		Tween.to(self['p2s_t1'],{scaleX:1,scaleY:1}, 700, Ease.backOut, null, 500+0*200);
+		Tween.to(self['p2s_t2'],{scaleX:1,scaleY:1}, 700, Ease.backOut, null, 500+1*400);
+
+		faceTween(self.p2_p1,4,400,200)
+		faceTween(self.p2_p2,4,400,200)
 
 		self.p2s_hand1.x=120;
 		self.p2s_hand2.scale(0,0);
@@ -270,7 +274,7 @@ function p2() {
 			Tween.to(self['p2s_t4'],{alpha:1}, 100, Ease.linearIn, Handler.create(self, function(){
 				sf(0,self.p2s_btn,0.9,450)
 			}), 400);
-		}), 300+2*400);
+		}), 500+2*400);
 	}
 
 	self.p2s_btn.on(Event.CLICK,this,function () {
@@ -310,15 +314,18 @@ function p3() {
 
 		self.p3s_t1.scale(0,0);
 		self.p3s_t2.scale(0,0);
-		Tween.to(self['p3s_t1'],{scaleX:1,scaleY:1}, 700, Ease.backOut, null, 300+0*200);
-		Tween.to(self['p3s_t2'],{scaleX:1,scaleY:1}, 700, Ease.backOut, null, 300+1*400);
+		Tween.to(self['p3s_t1'],{scaleX:1,scaleY:1}, 700, Ease.backOut, null, 500+0*200);
+		Tween.to(self['p3s_t2'],{scaleX:1,scaleY:1}, 700, Ease.backOut, null, 500+1*400);
+
+		faceTween(self.p3_p1,4,400,200)
+		faceTween(self.p3_p2,4,400,200)
 
 		// self.p3s_t4.alpha=0;
 		self.p3s_btn.scale(0,0)
 		
 		Tween.to(self['p3s_t4'],{alpha:1}, 100, Ease.linearIn, Handler.create(self, function(){
 			sf(0,self.p3s_btn,0.9,450)
-		}), 300+2*400);
+		}), 500+2*400);
 	}
 
 	self.p3s_btn.on(Event.CLICK,this,function () {
@@ -369,8 +376,11 @@ function p4() {
 
 		self.p4s_t1.scale(0,0);
 		self.p4s_t2.scale(0,0);
-		Tween.to(self['p4s_t1'],{scaleX:1,scaleY:1}, 700, Ease.backOut, null, 300+0*200);
-		Tween.to(self['p4s_t2'],{scaleX:1,scaleY:1}, 700, Ease.backOut, null, 300+1*400);
+		Tween.to(self['p4s_t1'],{scaleX:1,scaleY:1}, 700, Ease.backOut, null, 500+0*200);
+		Tween.to(self['p4s_t2'],{scaleX:1,scaleY:1}, 700, Ease.backOut, null, 500+1*400);
+
+		faceTween(self.p4_p1,4,400,200)
+		faceTween(self.p4_p2,4,400,200)
 
 		self.p2s_hand1.x=120;
 		self.p2s_hand2.scale(0,0);
@@ -385,7 +395,7 @@ function p4() {
 			Tween.to(self['p4s_t4'],{alpha:1}, 100, Ease.linearIn, Handler.create(self, function(){
 				sf(0,self.p4s_btn,0.9,450)
 			}), 400);
-		}), 300+2*400);
+		}), 500+2*400);
 	}
 
 	self.p4s_btn.on(Event.CLICK,this,function () {
@@ -472,7 +482,7 @@ function p5() {
 		p5Bool=true
 		downX=e.stageX
 		self.p5_tips.visible=false
-		console.log(downX,'MOUSE_DOWN')
+		// console.log(downX,'MOUSE_DOWN')
 	}
 
 
@@ -481,8 +491,9 @@ function p5() {
 		moveR-=downX-e.stageX
 		downX=e.stageX
 		
-		if(moveR<-40*multiple){
+		if(moveR<-41*multiple){
 			self.moveBox.off(Event.MOUSE_MOVE, this, onMoveFlag);
+			Laya.SoundManager.playSound("media/flag.mp3", 1);
 			setTimeout(function() {
 				Laya.stage.removeChild(self);
 				Laya.stage.addChildAt(new p6(), 0);
@@ -507,10 +518,19 @@ function p6() {
 	self.p6_box.visible=false;
 
 	self.num.text=0;
+
+	$('#flag').removeClass('none')
+
+	self.p6_t1.text=p6Arr[0]
+	self.p6_t2.text=p6Arr[1]
+	self.p6_t3.text=p6Arr[2]
+	self.p6_t4.text=p6Arr[3]
+	self.p6_t5.text=p6Arr[4]
+	self.p6_t6.text=p6Arr[5]
 	
 	// console.log(p6Arr)
 
-	sf(1,self.p6_tips,1.2,500)
+	sf(0,self.p6_tips,1.2,500)
 
 	var p6Id=0;
 	saveArr=[]
@@ -555,13 +575,14 @@ function p6() {
 			alert('最多只能立5个哦！')
 			return
 		}
-		index==7?saveArr.push(self.enter.text):saveArr.push(result[p6Id][index-1])
+		Laya.SoundManager.playSound("media/add.mp3", 1);
+		index==7?saveArr.push($('#flag').val()):saveArr.push(result[p6Id][index-1])
 		self.num.text=saveArr.length
 		console.log(saveArr)
 	}
 
 	self.definite.on(Event.CLICK,this,function(){
-		if(self.enter.text==''){
+		if($('#flag').val()==''){
 			alert('请输入flag！')
 			return
 		}
@@ -617,21 +638,21 @@ function p6() {
 	self.p6_open.on(Event.CLICK,this,function(){
 		openList()
 		self.p6_box.visible=true;
+		$('#flag').addClass('none')
 	})
 
 	function openList(){
 		for(var n = 0;n<6;n++){
 			// self.p6_box.getChildByName('b'+(n+1)).visible = false;
-			self['p6list_b'+(n+1)].visible = false;
-			self['p6list_b'+(n+1)].y=596+70*n;
-			tempArr[n].text='';
+			self['p6list_b'+n].visible = false;
+			self['p6list_b'+n].y=616+105*n;
+			self['p6list_t'+(n+1)].text='';
 			if(n<saveArr.length){
-				self['p6list_b'+(n+1)].visible = true;
+				self['p6list_b'+n].visible = true;
+				self['p6list_i'+(n+1)].skin = 'p6/p6list_t'+(n+1)+'.png';
 				self['p6list_t'+(n+1)].text = saveArr[n];
-				tempArr[n].text=saveArr[n];
 			}
 		}
-		console.log('tempArr',tempArr)
 	}
 
 	// 删除
@@ -657,73 +678,124 @@ function p6() {
 	function delFun(index){
 		saveArr.splice(index,1)
 		self.num.text=saveArr.length
+		Laya.SoundManager.playSound("media/del.mp3", 1);
 		openList()
 		// console.log(saveArr)
 	}
 
 	// 拖动
 	//按下坐标
-	var downY=0;
-	//偏移量
+	var startY=0;
+	//移动坐标
 	var offsetY=0;
+	//当前选项
+	var active;
 	//当前选项索引+1
-	var nowId;
-	//数组交换位置
-	var temp;
+	var activeIndex;
+	//当前y
+	var activeY;
 
-	var spArr=['',self.p6list_b1,self.p6list_b2,self.p6list_b3,self.p6list_b4,self.p6list_b5,self.p6list_b6]
+	var value=0;
 
+	var posArr=[616,721,826,931,1036,1141]
 	self.p6_box.on(Event.MOUSE_DOWN,this, dragDown)
 
+	console.log('p6',this.p6_box)
+
 	function dragDown(e){
-		console.log('name:',e.target.name,spArr)
-		if(e.target.name=='b1'||e.target.name=='b2'||e.target.name=='b3'||e.target.name=='b4'||e.target.name=='b5'||e.target.name=='b6'){
-			offsetY=0
-			downY=e.stageY
-			nowId=e.target.name.substr(e.target.name.length-1,1)*1
-			console.log(nowId,'nowId')
-			self['p6list_t'+nowId].color='#ff0400'
-			self['p6list_b'+nowId].zOrder=1
+		// console.log('name:',e.target.name,spArr)
+		if(e.target.name=='b0'||e.target.name=='b1'||e.target.name=='b2'||e.target.name=='b3'||e.target.name=='b4'||e.target.name=='b5'){
+			startY = e.stageY
+			activeIndex = e.target.name.substr(e.target.name.length-1,1)*1
+			active = self['p6list_b'+activeIndex]
+			activeY = active.y
+
+			// console.log(activeIndex,'activeIndex',active)
+			// console.log(active.getChildAt(1))
+
+			//active.getChildAt(1)文字
+			//active.getChildAt(0)序号
+			active.getChildAt(1).color='#ff0400'
+			active.zOrder=1
+			value = 0
+
 			self.p6_box.on(Event.MOUSE_MOVE,this, dragMove)
 			self.p6_box.on(Event.MOUSE_UP,this, dragUp)
-			self.p6_box.on(Event.MOUSE_OUT,this, dragUp)
+			// self.p6_box.on(Event.MOUSE_OUT,this, dragUp)
 		}
 	}
 	function dragMove(e){
 		// console.log('name:',e.target.name)
-		offsetY=e.stageY-downY
-		downY=e.stageY
+		offsetY=e.stageY-startY
+		startY=e.stageY
+
 		//超出上边界
-		if(self['p6list_b'+nowId].y<596&&offsetY<0){
-			offsetY=0
-		}
+		if(active.y<616&&offsetY<0)offsetY=0
 		//超出下边界
-		if(self['p6list_b'+nowId].y>596+(saveArr.length-1)*70&&offsetY>0){
-			offsetY=0
-		}
-		self['p6list_b'+nowId].y+=offsetY;
-		changePos()
+		if(active.y>616+(saveArr.length-1)*105&&offsetY>0)offsetY=0
+
+		active.y+=offsetY
+
+		checkScroll()
+		// active.y=s;
+		// changePos()
 	}
-	var posArr=[0,596,666,736,806,876,946]
+	function checkScroll() {
+		var t = active.y
+		var e = 0;
+		//向上
+		for (n = 0; n < activeIndex; n++){
+			if(active.y<posArr[n]+50){
+				// self['p6list_b'+n].getChildAt(1).text = n + 2 + "."
+				self['p6list_b'+n].y = posArr[n+1]
+				self['p6list_b'+n].getChildAt(0).skin='p6/p6list_t'+(n + 2)+'.png'
+			}else{
+				e = n + 1
+				// self['p6list_b'+n].getChildAt(1).text = n + 1 + "."
+				self['p6list_b'+n].getChildAt(0).skin='p6/p6list_t'+(n +1)+'.png'
+				self['p6list_b'+n].y = posArr[n]
+			}
+		}
+
+		//向下
+		for (var n = activeIndex + 1; n < saveArr.length; n++){
+			if(active.y+70>posArr[n]+50){
+				e = n
+				// self['p6list_b'+n].getChildAt(1).text = n + "."
+				self['p6list_b'+n].y = posArr[n-1]
+				self['p6list_b'+n].getChildAt(0).skin='p6/p6list_t'+n+'.png'
+			}else{
+				// self['p6list_b'+n].getChildAt(1).text = n + 1 + "."
+				self['p6list_b'+n].y = posArr[n]
+				self['p6list_b'+n].getChildAt(0).skin='p6/p6list_t'+(n+1)+'.png'
+			}
+		}
+
+		currentIndex = e
+		// active.getChildAt(1).text = e + 1 + "."
+		active.getChildAt(0).skin='p6/p6list_t'+(e + 1)+'.png'
+		
+	}
 	function changePos(){
 		//往下
-		var sp_y=spArr[nowId].y-posArr[nowId]
+		var sp_y=spArr[activeIndex].y-posArr[activeIndex]
 		tempIndex=parseInt(sp_y/70)
-		console.log(sp_y,nowId,spArr[nowId].y,'超过第'+tempIndex+'个元素')
+		console.log(sp_y,activeIndex,spArr[activeIndex].y,'超过第'+tempIndex+'个元素')
 
 		if(tempIndex>0){
 			for(var l=0;l<tempIndex;l++){
-				// console.log(spArr[nowId+l+1].name,l+1,posArr[nowId+l])
-				spArr[nowId+l+1].y=posArr[nowId+l]
-				spArr[nowId+l].y=posArr[nowId]
-				swapArr(saveArr,nowId+l,nowId+l-1)
+				// console.log(spArr[activeIndex+l+1].name,l+1,posArr[activeIndex+l])
+				spArr[activeIndex+l+1].y=posArr[activeIndex+l]
+				// activeIndex++
+				// swapArr(saveArr,activeIndex+l,activeIndex+l-1)
 			}
 		}
 		if(tempIndex<0){
 			for(var l=0;l<-tempIndex;l++){
-				// console.log(spArr[nowId-l-1].name,l-1,posArr[nowId-l],nowId-l-1)
-				spArr[nowId-l-1].y=posArr[nowId-l]
-				swapArr(saveArr,nowId-l-1,nowId-l)
+				// console.log(spArr[activeIndex-l-1].name,l-1,posArr[activeIndex-l],activeIndex-l-1)
+				spArr[activeIndex-l-1].y=posArr[activeIndex-l]
+				// activeIndex
+				// swapArr(saveArr,activeIndex-l-1,activeIndex-l)
 			}
 		}
 	}
@@ -738,20 +810,22 @@ function p6() {
 		self.p6_box.off(Event.MOUSE_MOVE,this, dragMove)
 		self.p6_box.off(Event.MOUSE_UP,this, dragUp)
 		self.p6_box.off(Event.MOUSE_OUT,this, dragUp)
-		self['p6list_t'+nowId].color='#666666'
-		self['p6list_b'+nowId].zOrder=0
-		if(tempIndex==0){
-			spArr[nowId].y=posArr[nowId]
-		}else{
-			
-		}
+		active.getChildAt(1).color='#666666'
+		active.zOrder=0
 
-		// console.log('dragUp')
+		var n = saveArr[activeIndex];
+		saveArr.splice(activeIndex, 1),
+		saveArr.splice(currentIndex, 0, n);
+
+		openList()
+		console.log('dragUp',saveArr)
+
 	}
 	
 
 	self.p6_close.on(Event.CLICK,this,function(){
 		self.p6_box.visible=false;
+		$('#flag').removeClass('none')
 	})
 
 	self.next.on(Event.CLICK,this,function () {
@@ -778,6 +852,7 @@ function p6() {
 			success : function(res) {
 				console.log('add:',res);
 				if(res.code==0){
+					$('#flag').addClass('none')
 					id=res.data.id
 					Laya.stage.removeChild(self);
 					Laya.stage.addChildAt(new p7(), 0);
@@ -826,21 +901,37 @@ function p7() {
 	self.count.scale(0,0);
 	self.p7_btn2.on(Event.CLICK,this,jump)
 
+	self.time.skin = '';
+
 	function jump(){
 		self.p7_btn1.off(Event.CLICK,this,back)
 		self.p7_btn2.off(Event.CLICK,this,jump)
 		console.log('原地生效')
 		Laya.stage.addChildAt(new p8(), 0);
-		Tween.to(self.count,{scaleX: 1,scaleY:1}, 100, Ease['cubicOut']);
-		self.count.skin = 'p7/count_3.png';
-		Laya.timer.loop(1000,self, delTime)
+		// Tween.to(self.count,{scaleX: 1,scaleY:1}, 100, Ease['cubicOut']);
+		// self.count.skin = 'p7/count_3.png';
+		Laya.SoundManager.playSound("media/time.mp3", 1);
+		// Laya.timer.loop(1000,self, delTime)
+		Laya.timer.loop(3000/39,self, timeFun)
+	}
+
+	var td=1
+	function timeFun(){
+		td++
+		if(td>=39){
+			Laya.stage.removeChild(self);
+			$('#img,.p8_btn1,.p8_btn2').removeClass('none')
+			Laya.timer.clear(self,timeFun);
+			return
+		}
+		self.time.skin='time/time'+td+'.jpg'
 	}
 
 	function delTime(){
 		del--
 		console.log(del)
 		if(del<=0){
-			Laya.stage.removeChild(self);
+			// Laya.stage.removeChild(self);
 			$('#main').css('display','block')
 			Laya.timer.clear(self,delTime);
 		}
@@ -894,10 +985,11 @@ function p8() {
 	},500)
 
 	function onClick(){
-		var htmlCanvas = self.drawToCanvas(688,1253,-35,-125);//把精灵绘制到canvas上面
+		// var htmlCanvas = self.drawToCanvas(688,1253,-35,-125);//把精灵绘制到canvas上面
+		var htmlCanvas = self.drawToCanvas(750,1500);//把精灵绘制到canvas上面
 		htmlCanvas.toBase64("image/png",0.92,function(base64){
 			// console.log(base64);//打印图片base64信息，可以发给服务器或者保存为图片
-			$('#img').attr('src',base64).css('display','block');
+			$('#img').attr('src',base64);
 			self.p8_save.visible=true;
 			self.p8_saves.visible=false;
 			self.p6_logo.visible=false;
@@ -961,8 +1053,6 @@ function share(res) {
 	
 	}
 }
-
-
 
 var loadView = null;
 function load() {
@@ -1029,7 +1119,7 @@ Laya.stage.scaleMode='fixedwidth';
 //自动竖屏
 Laya.stage.screenMode = "vertical";
 //对齐方式
-Laya.stage.alignV='top';
+// Laya.stage.alignV='top';
 // Laya.Stat.show(0,0);
 Laya.stage.bgColor='#fff';
 
@@ -1072,6 +1162,46 @@ var assets = [
 	{url:'img/p8_btn1.png',type:Laya.Loader.IMAGE},
 	{url:'img/p8_btn2.png',type:Laya.Loader.IMAGE},
 	{url:'img/share.png',type:Laya.Loader.IMAGE},
+
+	{url:'time/time1.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time2.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time3.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time4.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time5.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time6.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time7.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time8.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time9.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time10.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time11.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time12.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time13.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time14.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time15.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time16.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time17.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time18.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time19.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time20.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time21.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time22.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time23.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time24.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time25.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time26.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time27.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time28.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time29.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time30.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time31.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time32.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time33.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time34.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time35.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time36.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time37.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time38.jpg',type:Laya.Loader.IMAGE},
+	{url:'time/time39.jpg',type:Laya.Loader.IMAGE},
 ];
 function loading() {
 	Laya.stage.addChildAt(new load(),0);
@@ -1091,13 +1221,15 @@ function loading() {
 // 加载结束侦听器
 function onAssetLoaded(texture) {
 	console.log("加载结束",texture);
-	Tween.to(loadView,{alpha:0}, 600, Ease.linearIn, Handler.create(self, function(){
-		Laya.stage.removeChild(loadView);
-	}), 300);
 
+	if(Laya.stage.height<1300){
+		 $(".p8_btn1,.p8_btn2").css("top","12.68rem");
+	}
+
+	Laya.stage.removeChild(loadView);
 	shareId?Laya.stage.addChildAt(new share(), 0):Laya.stage.addChildAt(new p6(), 0);
-	loadNum++
-	loadEnd()
+	// loadNum++
+	// loadEnd()
 }
 
 function loadEnd(){
@@ -1119,7 +1251,6 @@ function loadEnd(){
 				console.log('loading:',res);
 				if(res.code==0){
 					Laya.stage.addChildAt(new share(res), 0)
-				
 				}else{
 					Laya.stage.addChildAt(new p1(), 0)
 					// alert(res.msg)

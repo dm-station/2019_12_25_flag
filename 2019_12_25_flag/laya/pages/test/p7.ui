@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":9,
+    "selecteID":37,
     "props":{"width":750,"sceneColor":"#000000","height":1500},
     "nodeParent":-1,
     "label":"View",
@@ -28,7 +28,61 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":612,"x":30,"skin":"p7/p7_bg1.png","alpha":0.1},
+            "props":{"y":135,"x":288,"width":168,"var":"photo","skin":"p6/p6_photo.png","height":169},
+            "nodeParent":1,
+            "label":"Image(photo)",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":30,
+            "child":[
+                {
+                    "type":"Image",
+                    "props":{"y":0,"x":0,"skin":"p6/p6_mask.png","renderType":"mask"},
+                    "nodeParent":30,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":33,
+                    "child":[
+                        ]
+                }],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":135,"x":288,"width":168,"skin":"p6/p6_photo_bg.png","height":169},
+            "nodeParent":1,
+            "label":"Image",
+            "isOpen":true,
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":31,
+            "child":[
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":272,"x":351,"skin":"p6/p6_photos.png"},
+            "nodeParent":1,
+            "label":"Image",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":32,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":595,"x":70,"skin":"p7/p7_bg1.png","alpha":0.1},
             "nodeParent":1,
             "label":"Image",
             "isDirectory":false,
@@ -36,12 +90,13 @@
             "hasChild":false,
             "compId":8,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Label",
-            "props":{"y":393,"x":359,"width":255,"var":"name","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":26,"font":"SimSun","color":"#333333"},
+            "props":{"y":342,"x":368,"width":305,"var":"name","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":26,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(name)",
             "isDirectory":false,
@@ -54,7 +109,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":387,"x":231,"skin":"p7/p7_t1.png"},
+            "props":{"y":338,"x":190,"skin":"p7/p7_t1.png"},
             "nodeParent":1,
             "label":"Image",
             "isDirectory":false,
@@ -62,67 +117,13 @@
             "hasChild":false,
             "compId":9,
             "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":206,"x":299,"width":153,"var":"photo","skin":"p6/p6_photo.png","height":153},
-            "nodeParent":1,
-            "label":"Image(photo)",
-            "isOpen":false,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":10,
-            "child":[
-                {
-                    "type":"Image",
-                    "props":{"y":0,"x":0,"width":153,"skin":"p6/p6_mask.png","renderType":"mask","height":153},
-                    "nodeParent":10,
-                    "label":"Image",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":12,
-                    "child":[
-                        ]
-                }],
-            "$HIDDEN":false
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":206,"x":299,"skin":"p6/p6_photo_bg.png"},
-            "nodeParent":1,
-            "label":"Image",
-            "isOpen":true,
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":11,
-            "child":[
                 ],
             "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":513,"x":119,"skin":"p7/p7_bg2.png"},
-            "nodeParent":1,
-            "label":"Image",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":13,
-            "child":[
-                ],
-            "$HIDDEN":false
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":579,"x":146,"var":"p7_num1","skin":"p7/p7_num1.png"},
+            "props":{"y":549,"x":57,"var":"p7_num1","skin":"p7/p7_num1.png"},
             "nodeParent":1,
             "label":"Image(p7_num1)",
             "isDirectory":false,
@@ -136,7 +137,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":665,"x":146,"var":"p7_num2","skin":"p7/p7_num2.png"},
+            "props":{"y":653,"x":57,"var":"p7_num2","skin":"p7/p7_num2.png"},
             "nodeParent":1,
             "label":"Image(p7_num2)",
             "isDirectory":false,
@@ -150,7 +151,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":751,"x":146,"var":"p7_num3","skin":"p7/p7_num3.png"},
+            "props":{"y":757,"x":57,"var":"p7_num3","skin":"p7/p7_num3.png"},
             "nodeParent":1,
             "label":"Image(p7_num3)",
             "isDirectory":false,
@@ -164,7 +165,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":836,"x":146,"var":"p7_num4","skin":"p7/p7_num4.png"},
+            "props":{"y":861,"x":57,"var":"p7_num4","skin":"p7/p7_num4.png"},
             "nodeParent":1,
             "label":"Image(p7_num4)",
             "isDirectory":false,
@@ -178,7 +179,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":924,"x":146,"var":"p7_num5","skin":"p7/p7_num5.png"},
+            "props":{"y":965,"x":57,"var":"p7_num5","skin":"p7/p7_num5.png"},
             "nodeParent":1,
             "label":"Image(p7_num5)",
             "isDirectory":false,
@@ -192,7 +193,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":1008,"x":146,"var":"p7_num6","skin":"p7/p7_num6.png"},
+            "props":{"y":1069,"x":57,"var":"p7_num6","skin":"p7/p7_num6.png"},
             "nodeParent":1,
             "label":"Image(p7_num6)",
             "isDirectory":false,
@@ -206,7 +207,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":589,"x":267,"width":349,"var":"p7_t1","text":"实现人生第一个全马","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":25,"font":"SimSun","color":"#333333"},
+            "props":{"y":559,"x":203,"width":492,"var":"p7_t1","text":"实现人生第一个全马","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":36,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(p7_t1)",
             "isDirectory":false,
@@ -219,7 +220,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":676,"x":267,"width":349,"var":"p7_t2","text":"健身房每周至少打卡三次","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":25,"font":"SimSun","color":"#333333"},
+            "props":{"y":663,"x":203,"width":492,"var":"p7_t2","text":"健身房每周至少打卡三次","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":36,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(p7_t2)",
             "isDirectory":false,
@@ -232,7 +233,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":761,"x":267,"width":349,"var":"p7_t3","text":"走出国门，挑战外国马拉松","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":25,"font":"SimSun","color":"#333333"},
+            "props":{"y":767,"x":203,"width":492,"var":"p7_t3","text":"走出国门，挑战外国马拉松","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":36,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(p7_t3)",
             "isDirectory":false,
@@ -245,7 +246,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":846,"x":267,"width":349,"var":"p7_t4","text":"买专业䨻跑鞋，跑得更快","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":25,"font":"SimSun","color":"#333333"},
+            "props":{"y":871,"x":203,"width":492,"var":"p7_t4","text":"买专业䨻跑鞋，跑得更快","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":36,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(p7_t4)",
             "isDirectory":false,
@@ -258,7 +259,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":933,"x":267,"width":349,"var":"p7_t5","text":"每年都参加马拉松，跑到80岁！ ","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":25,"font":"SimSun","color":"#333333"},
+            "props":{"y":975,"x":203,"width":492,"var":"p7_t5","text":"每年都参加马拉松，跑到80岁！ ","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":36,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(p7_t5)",
             "isDirectory":false,
@@ -271,7 +272,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":1019,"x":267,"width":349,"var":"p7_t6","text":"拔草李宁全套最新款跑训产品 ","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":25,"font":"SimSun","color":"#333333"},
+            "props":{"y":1079,"x":203,"width":492,"var":"p7_t6","text":"拔草李宁全套最新款跑训产品 ","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":36,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(p7_t6)",
             "isDirectory":false,
@@ -284,7 +285,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":1138,"x":120,"var":"p7_btn1","skin":"p7/p7_btn1.png"},
+            "props":{"y":1193,"x":85,"var":"p7_btn1","skin":"p7/p7_btn1.png"},
             "nodeParent":1,
             "label":"Image(p7_btn1)",
             "isDirectory":false,
@@ -292,12 +293,13 @@
             "hasChild":false,
             "compId":14,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"Image",
-            "props":{"y":1138,"x":412,"var":"p7_btn2","skin":"p7/p7_btn2.png"},
+            "props":{"y":1193,"x":416,"var":"p7_btn2","skin":"p7/p7_btn2.png"},
             "nodeParent":1,
             "label":"Image(p7_btn2)",
             "isDirectory":false,
@@ -305,7 +307,22 @@
             "hasChild":false,
             "compId":15,
             "child":[
-                ]
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":1363,"x":274,"skin":"p6/p6_logo.png"},
+            "nodeParent":1,
+            "label":"Image",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":36,
+            "child":[
+                ],
+            "$HIDDEN":false
         },
         {
             "x":15,
@@ -317,6 +334,20 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":28,
+            "child":[
+                ],
+            "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":0,"x":0,"var":"time","skin":"time/time1.jpg"},
+            "nodeParent":1,
+            "label":"Image(time)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":37,
             "child":[
                 ]
         }],
