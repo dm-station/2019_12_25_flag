@@ -38,6 +38,30 @@ input,select{outline: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);-webki
     display: none;
 }
 
+#music{
+    width: 100%;
+    position: absolute;
+    z-index: 99;
+    /*pointer-events: none;*/
+}
+.audio{
+    width: 0.8rem;
+    position: absolute;
+    top: 0.1rem;
+    right: 0.1rem;
+}
+.rAni{
+    -webkit-animation: rAni 1.5s linear infinite ;
+}
+@-webkit-keyframes rAni {
+    0%{
+        -webkit-transform:  rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform:  rotate(360deg);
+    }
+}
 
 #main{
     width: 100%;

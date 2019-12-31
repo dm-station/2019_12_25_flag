@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":22,
+    "selectedBox":45,
+    "selecteID":43,
     "props":{"width":750,"sceneColor":"#000000","height":1500},
     "nodeParent":-1,
     "label":"View",
@@ -42,7 +42,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":153,"x":280,"width":168,"var":"photo","skin":"p6/p6_photo.png","height":169},
+            "props":{"y":153,"x":280,"width":168,"var":"photo","height":169},
             "nodeParent":1,
             "label":"Image(photo)",
             "isOpen":false,
@@ -83,7 +83,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":290,"x":343,"skin":"p6/p6_photos.png"},
+            "props":{"y":290,"x":343,"visible":false,"skin":"p6/p6_photos.png"},
             "nodeParent":1,
             "label":"Image",
             "isDirectory":false,
@@ -91,7 +91,8 @@
             "hasChild":false,
             "compId":82,
             "child":[
-                ]
+                ],
+            "$HIDDEN":true
         },
         {
             "x":15,
@@ -551,13 +552,14 @@
                     "props":{"y":616,"x":100,"width":498,"var":"p6list_b0","name":"b0","height":55},
                     "nodeParent":66,
                     "label":"Box(p6list_b0)",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":45,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"var":"p6list_i1","skin":"p6/p6list_t1.png","name":"i1"},
                             "nodeParent":45,
@@ -572,6 +574,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":5,"x":64,"width":434,"var":"p6list_t1","valign":"middle","text":"跑人生第一个半马","styleSkin":"loading/label.png","overflow":"hidden","leading":6,"height":44,"fontSize":28,"color":"#666666"},
                             "nodeParent":45,
@@ -585,6 +588,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":4,"x":498,"width":57,"var":"p6list_x1","height":44},
                             "nodeParent":45,
@@ -603,13 +607,14 @@
                     "props":{"y":721,"x":100,"width":498,"var":"p6list_b1","name":"b1","height":55},
                     "nodeParent":66,
                     "label":"Box(p6list_b1)",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":46,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"var":"p6list_i2","skin":"p6/p6list_t2.png"},
                             "nodeParent":46,
@@ -624,6 +629,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":5,"x":64,"width":434,"var":"p6list_t2","valign":"middle","text":"跑人生第一个半马","styleSkin":"loading/label.png","overflow":"hidden","leading":6,"height":44,"fontSize":28,"color":"#666666"},
                             "nodeParent":46,
@@ -637,6 +643,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":4,"x":498,"width":57,"var":"p6list_x2","height":44},
                             "nodeParent":46,
@@ -655,13 +662,14 @@
                     "props":{"y":826,"x":100,"width":498,"var":"p6list_b2","name":"b2"},
                     "nodeParent":66,
                     "label":"Box(p6list_b2)",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":50,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"var":"p6list_i3","skin":"p6/p6list_t3.png"},
                             "nodeParent":50,
@@ -676,6 +684,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":5,"x":64,"width":434,"var":"p6list_t3","valign":"middle","text":"跑人生第一个半马","styleSkin":"loading/label.png","overflow":"hidden","leading":6,"height":44,"fontSize":28,"color":"#666666"},
                             "nodeParent":50,
@@ -689,6 +698,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":4,"x":498,"width":57,"var":"p6list_x3","height":44},
                             "nodeParent":50,
@@ -707,13 +717,14 @@
                     "props":{"y":931,"x":100,"width":498,"var":"p6list_b3","name":"b3"},
                     "nodeParent":66,
                     "label":"Box(p6list_b3)",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":54,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"var":"p6list_i4","skin":"p6/p6list_t4.png"},
                             "nodeParent":54,
@@ -728,6 +739,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":5,"x":64,"width":434,"var":"p6list_t4","valign":"middle","text":"跑人生第一个半马","styleSkin":"loading/label.png","overflow":"hidden","leading":6,"height":44,"fontSize":28,"color":"#666666"},
                             "nodeParent":54,
@@ -741,6 +753,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":4,"x":498,"width":57,"var":"p6list_x4","height":44},
                             "nodeParent":54,
@@ -759,13 +772,14 @@
                     "props":{"y":1036,"x":100,"width":498,"var":"p6list_b4","name":"b4"},
                     "nodeParent":66,
                     "label":"Box(p6list_b4)",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":58,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"var":"p6list_i5","skin":"p6/p6list_t5.png"},
                             "nodeParent":58,
@@ -780,6 +794,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":5,"x":64,"width":434,"var":"p6list_t5","valign":"middle","text":"跑人生第一个半马","styleSkin":"loading/label.png","overflow":"hidden","leading":6,"height":44,"fontSize":28,"color":"#666666"},
                             "nodeParent":58,
@@ -793,6 +808,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":4,"x":498,"width":57,"var":"p6list_x5","height":44},
                             "nodeParent":58,
@@ -811,13 +827,14 @@
                     "props":{"y":1141,"x":100,"width":498,"var":"p6list_b5","name":"b5","height":55},
                     "nodeParent":66,
                     "label":"Box(p6list_b5)",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":62,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"var":"p6list_i6","skin":"p6/p6list_t6.png"},
                             "nodeParent":62,
@@ -832,6 +849,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":5,"x":64,"width":434,"var":"p6list_t6","valign":"middle","text":"跑人生第一个半马","styleSkin":"loading/label.png","overflow":"hidden","leading":6,"height":44,"fontSize":28,"color":"#666666"},
                             "nodeParent":62,
@@ -845,6 +863,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":4,"x":498,"width":57,"var":"p6list_x6","height":44},
                             "nodeParent":62,
@@ -859,7 +878,7 @@
                         }]
                 }],
             "$LOCKED":false,
-            "$HIDDEN":true
+            "$HIDDEN":false
         }],
     "animations":[
         {

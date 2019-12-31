@@ -13,49 +13,62 @@ document.body.addEventListener('touchmove', function (e) {
 
 var audio=document.getElementById("audio");
 audio.addEventListener('ended', function () {
-	audio.play();
+	audio.play()
 }, false);
+
+$('.audio').on('click',function(){
+    // alert("段落被点击了。");
+	if(audio.paused){//暂停
+		$('.audio').addClass('rAni').attr("src", './img/music.png')
+		audio.play()
+	}else{
+		$('.audio').removeClass('rAni').attr("src", './img/music_off.png')
+		audio.pause()
+	}
+});
+
+
 $.ajax({
-		url: "//api.slb.moneplus.cn/jssdk/real_list.php",
-		type: "GET",
-		dataType: 'jsonp',
-		jsonp: 'callback',
-		data: {
-			'url':window.location.protocol+'//'+ location.hostname + location.pathname + location.search
-			//  'url': location.hostname + location.pathname + location.search
-		},
-		success: function(result){
-			console.log(result)
-			wx.config({
-				debug: false,
-				appId: result.appId,
-				timestamp: result.timestamp,
-				nonceStr: result.nonceStr,
-				signature: result.signature,
-				jsApiList: [
-					'onMenuShareTimeline',
-					'onMenuShareAppMessage'
-				]
-			})
-			updata();
-		},
-		error:function(res){
-			alert(res);
-		}
-	});
+	url: "//api.slb.moneplus.cn/jssdk/real_list.php",
+	type: "GET",
+	dataType: 'jsonp',
+	jsonp: 'callback',
+	data: {
+		'url':window.location.protocol+'//'+ location.hostname + location.pathname + location.search
+		//  'url': location.hostname + location.pathname + location.search
+	},
+	success: function(result){
+		console.log(result)
+		wx.config({
+			debug: false,
+			appId: result.appId,
+			timestamp: result.timestamp,
+			nonceStr: result.nonceStr,
+			signature: result.signature,
+			jsApiList: [
+				'onMenuShareTimeline',
+				'onMenuShareAppMessage'
+			]
+		})
+		updata();
+	},
+	error:function(res){
+		alert(res);
+	}
+});
 	
 // 微信分享
 function updata(){
 	wx.ready(function (e) {
 		// wxReady();
 		wx.onMenuShareTimeline({//分享到朋友圈
-			title:'2019年的flag向您发起打脸攻击',
-			desc: '还能怎么办？Flag接着立呗！',
+			title:'跑者们都在立新年Flag，就差你了',
+			desc: '速度要快',
 			link: urlTitle,
 			imgUrl: 'http://cdn.campaign.realh5.cn/2019/flag/share.jpg',
 			success: function () {
 				// _hmt.push(['_trackEvent', '微信分享', '朋友圈', '成功']);
-				// _czc.push(['_trackEvent', '微信分享', '朋友圈','成功'])
+				_czc.push(['_trackEvent', '微信分享', '朋友圈','成功'])
 				console.log('朋友圈success')
 				
 			},
@@ -66,14 +79,14 @@ function updata(){
 		})
 		
 		wx.onMenuShareAppMessage({//分享好友
-			title: '《2019跑者打脸现场》',
-			desc: '还能怎么办？Flag接着立呗！',
+			title: '跑者们都在立新年Flag，就差你了',
+			desc: '速度要快',
 			link: urlTitle,
 			imgUrl: 'http://cdn.campaign.realh5.cn/2019/flag/share.jpg',
 			success: function () {
 				// 用户确认分享后执行的回调函数
 				// _hmt.push(['_trackEvent', '微信分享', '好友', '成功']);
-				// _czc.push(['_trackEvent', '微信分享', '好友','成功'])
+				_czc.push(['_trackEvent', '微信分享', '好友','成功'])
 				console.log('分享好友success')
 			},
 			cancel: function () {

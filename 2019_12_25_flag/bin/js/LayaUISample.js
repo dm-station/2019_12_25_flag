@@ -200,6 +200,7 @@ function p1() {
 	// Tween.to(self.p1_top,{alpha:1}, 700, Ease.linearIn, null, 300);
 
 	self.p1_btn.on(Event.CLICK,this,function () {
+		_czc.push(['_trackEvent', '首页', '按钮','开始游戏'])
 		Laya.stage.removeChild(self);
 		Laya.stage.addChildAt(new p2(), 0);
 	})
@@ -411,6 +412,8 @@ function p5() {
 	var Event = laya.events.Event;
 	self.y=Laya.stage.height/2-Laya.stage.designHeight/2;
 
+	console.log('5过渡页','RESIZE:'+Laya.stage.width,Laya.stage.height,'Browser:'+Laya.Browser.clientWidth,Laya.Browser.clientHeight,'isWebGL:'+Laya.Render.isWebGL,'stage:'+self.width,self.height)
+
 	function lb(obj,num,time,time2) {
 		Tween.to(obj,{scaleX:num,scaleY:num},time,Ease.linearIn,Handler.create(self, function(){
 			Tween.to(obj,{scaleX:1,scaleY:1},time2,Ease.linearIn,Handler.create(self, function(){lb(obj,num,time,time2)}))
@@ -508,7 +511,7 @@ function p6() {
 	p6UI.super(this);
 	var self = this;
 	
-	console.log('66666666666')
+	console.log('6立flag页','RESIZE:'+Laya.stage.width,Laya.stage.height,'Browser:'+Laya.Browser.clientWidth,Laya.Browser.clientHeight,'isWebGL:'+Laya.Render.isWebGL,'stage:'+self.width,self.height)
 	self.name.text=name;
 	self.photo.skin=photo;
 
@@ -578,7 +581,7 @@ function p6() {
 		Laya.SoundManager.playSound("media/add.mp3", 1);
 		index==7?saveArr.push($('#flag').val()):saveArr.push(result[p6Id][index-1])
 		self.num.text=saveArr.length
-		console.log(saveArr)
+		// console.log(saveArr)
 	}
 
 	self.definite.on(Event.CLICK,this,function(){
@@ -699,8 +702,6 @@ function p6() {
 
 	var posArr=[616,721,826,931,1036,1141]
 	self.p6_box.on(Event.MOUSE_DOWN,this, dragDown)
-
-	console.log('p6',this.p6_box)
 
 	function dragDown(e){
 		// console.log('name:',e.target.name,spArr)
@@ -833,6 +834,7 @@ function p6() {
 			alert('请选择1-5个flag！')
 			return
 		}
+		_czc.push(['_trackEvent', '立Flag页', '按钮','下一步'])
 		self.next.mouseEnabled=false;
 		$.ajax({
 			type : 'post',
@@ -879,9 +881,11 @@ function p7() {
 	self.name.text=name;
 	self.photo.skin=photo;
 
+	console.log('7展示页','RESIZE:'+Laya.stage.width,Laya.stage.height,'Browser:'+Laya.Browser.clientWidth,Laya.Browser.clientHeight,'isWebGL:'+Laya.Render.isWebGL,'stage:'+self.width,self.height)
+
 	for(var g = 0;g<6;g++){
 		self['p7_num'+(g+1)].visible = false;
-		console.log('p7_t'+(g+1))
+		// console.log('p7_t'+(g+1))
 		self['p7_t'+(g+1)].text = '';
 		if(g<saveArr.length){
 			self['p7_num'+(g+1)].visible = true;
@@ -906,6 +910,7 @@ function p7() {
 	function jump(){
 		self.p7_btn1.off(Event.CLICK,this,back)
 		self.p7_btn2.off(Event.CLICK,this,jump)
+		_czc.push(['_trackEvent', '展示页', '按钮','原地生效'])
 		console.log('原地生效')
 		Laya.stage.addChildAt(new p8(), 0);
 		// Tween.to(self.count,{scaleX: 1,scaleY:1}, 100, Ease['cubicOut']);
@@ -963,7 +968,7 @@ function p8() {
 	var Event = laya.events.Event;
 	self.y=Laya.stage.height/2-Laya.stage.designHeight/2;
 
-	console.log('p888888')
+	console.log('保存页','RESIZE:'+Laya.stage.width,Laya.stage.height,'Browser:'+Laya.Browser.clientWidth,Laya.Browser.clientHeight,'isWebGL:'+Laya.Render.isWebGL,'stage:'+self.width,self.height)
 
 	for(var g = 0;g<6;g++){
 		self['p7_n'+(g+1)].visible = false;
@@ -1074,32 +1079,47 @@ function load() {
 		}), 400);
 	}
 
-	if(Laya.Browser.onWeiXin){
-		console.log('wx')
-		$.ajax({
-			type : 'post',
-			async : true,
-			url :  '//api.slb.moneplus.cn/wechat/index.php?r=common/token/info',
-			dataType: 'json',
-			data:{
-				token:token
-			},
-			success : function(res) {
-				console.log('info',res);
-				name=res.data.nickname
-				photo=res.data.headimgurl
-			}
-		});
-	}else{
-		console.log('nowx')
-		name='晓'
-		photo='p6/p6_photo.png'
-		token=''
-		var arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-		for (var i = 0; i < 28; i++) {
-			token += arr[Math.floor(Math.random() * arr.length)]
+	$.ajax({
+		type : 'post',
+		async : true,
+		url :  '//api.slb.moneplus.cn/wechat/index.php?r=common/token/info',
+		dataType: 'json',
+		data:{
+			token:token
+		},
+		success : function(res) {
+			console.log('info',res);
+			name=res.data.nickname
+			photo=res.data.headimgurl
 		}
-	}
+	});
+
+	// if(Laya.Browser.onWeiXin){
+	// 	console.log('wx')
+	// 	$.ajax({
+	// 		type : 'post',
+	// 		async : true,
+	// 		url :  '//api.slb.moneplus.cn/wechat/index.php?r=common/token/info',
+	// 		dataType: 'json',
+	// 		data:{
+	// 			token:token
+	// 		},
+	// 		success : function(res) {
+	// 			console.log('info',res);
+	// 			name=res.data.nickname
+	// 			photo=res.data.headimgurl
+	// 		}
+	// 	});
+	// }else{
+	// 	console.log('nowx')
+	// 	name='晓'
+	// 	photo='p6/p6_photo.png'
+	// 	token=''
+	// 	var arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+	// 	for (var i = 0; i < 28; i++) {
+	// 		token += arr[Math.floor(Math.random() * arr.length)]
+	// 	}
+	// }
 
 }
 

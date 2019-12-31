@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":27,
+    "selecteID":43,
     "props":{"width":750,"sceneColor":"#000000","height":1500},
     "nodeParent":-1,
     "label":"View",
@@ -83,7 +83,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":330,"x":143,"skin":"p6/p6_photos.png"},
+            "props":{"y":330,"x":143,"visible":false,"skin":"p6/p6_photos.png"},
             "nodeParent":1,
             "label":"Image",
             "isDirectory":false,
@@ -92,7 +92,7 @@
             "compId":30,
             "child":[
                 ],
-            "$HIDDEN":false
+            "$HIDDEN":true
         },
         {
             "x":15,
@@ -222,7 +222,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":610,"x":219,"width":480,"var":"share_t2","text":"健身房每周至少打卡三次","styleSkin":"loading/label.png","overflow":"visible","height":47,"fontSize":32,"color":"#333333","bold":true},
+            "props":{"y":610,"x":219,"width":480,"var":"share_t2","text":"健身房每周至少打卡三次","styleSkin":"loading/label.png","overflow":"hidden","height":47,"fontSize":32,"color":"#333333","bold":true},
             "nodeParent":1,
             "label":"Label(share_t2)",
             "isDirectory":false,
