@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":16,
+    "selecteID":30,
     "props":{"width":750,"sceneColor":"#000000","height":1500},
     "nodeParent":-1,
     "label":"View",
@@ -38,6 +38,7 @@
             "compId":16,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":485,"x":34,"width":631,"var":"p4_t1","skin":"p4/p4_t1.png","pivotY":269,"pivotX":-27,"height":218},
                     "nodeParent":16,
@@ -51,6 +52,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":527,"x":113,"skin":"p4/p4_photo.png"},
                     "nodeParent":16,
@@ -64,6 +66,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":660,"x":220,"width":194,"var":"p4_t2","skin":"p4/p4_t2.png","pivotY":113,"pivotX":156,"height":97},
                     "nodeParent":16,
@@ -77,6 +80,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":1105,"x":54,"var":"p4_t4","skin":"p4/p4_t4.png"},
                     "nodeParent":16,
@@ -90,6 +94,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":959,"x":24,"width":95,"var":"p2_hand2","skin":"p2/p2_hand2.png","pivotY":84,"pivotX":24,"height":120},
                     "nodeParent":16,
@@ -103,6 +108,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":614,"x":599,"width":36,"var":"p2_star","skin":"p2/p2_star.png","pivotY":22,"pivotX":22,"height":43},
                     "nodeParent":16,
@@ -116,6 +122,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":710,"x":182,"width":36,"var":"p2_star2","skin":"p2/p2_star2.png","pivotY":19,"pivotX":20,"height":42},
                     "nodeParent":16,
@@ -129,6 +136,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":1311,"x":378,"width":169,"var":"p4_btn","skin":"p2/p2_btn.png","pivotY":58,"pivotX":88,"height":108},
                     "nodeParent":16,
@@ -143,6 +151,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Panel",
                     "props":{"y":575,"x":748,"width":111,"var":"hand1","pivotY":64,"pivotX":109,"height":100},
                     "nodeParent":16,
@@ -154,6 +163,7 @@
                     "compId":32,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"var":"p2_hand1","skin":"p2/p2_hand1.png"},
                             "nodeParent":32,
@@ -182,6 +192,7 @@
             "compId":30,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":442,"x":39,"width":652,"var":"p4s_t1","skin":"p4/p4s_t1.png","pivotY":205,"pivotX":-10,"height":179},
                     "nodeParent":30,
@@ -195,6 +206,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":556,"x":101,"skin":"p4/p4s_photo.png"},
                     "nodeParent":30,
@@ -208,6 +220,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":643,"x":467,"width":190,"var":"p4s_t2","skin":"p4/p4s_t2.png","pivotY":100,"pivotX":81,"height":93},
                     "nodeParent":30,
@@ -221,6 +234,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":1107,"x":76,"var":"p4s_t4","skin":"p4/p4_t4.png"},
                     "nodeParent":30,
@@ -234,6 +248,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":618,"x":3,"width":80,"var":"p2s_hand2","skin":"p2/p2s_hand2.png","pivotY":41,"pivotX":3,"height":130},
                     "nodeParent":30,
@@ -247,6 +262,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":1305,"x":377,"width":227,"var":"p4s_btn","skin":"p4/p4s_btn.png","pivotY":69,"pivotX":114,"height":125},
                     "nodeParent":30,
@@ -261,6 +277,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Panel",
                     "props":{"y":513,"x":751,"width":96,"var":"hand1s","pivotY":23,"pivotX":97,"height":100},
                     "nodeParent":30,
@@ -286,6 +303,7 @@
                         }]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":972,"x":327,"width":93,"var":"p4_p1","skin":"p3/p3_pa1.png","pivotY":67,"pivotX":77,"height":86},
                     "nodeParent":30,
@@ -299,6 +317,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":904,"x":455,"width":85,"var":"p4_p2","skin":"p3/p3_pa2.png","pivotY":80,"pivotX":34,"height":84},
                     "nodeParent":30,
@@ -311,7 +330,7 @@
                         ],
                     "$HIDDEN":false
                 }],
-            "$HIDDEN":true
+            "$HIDDEN":false
         }],
     "animations":[
         {

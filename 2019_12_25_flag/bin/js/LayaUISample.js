@@ -3,14 +3,15 @@ var Handler = Laya.Handler;
 var Tween = Laya.Tween;
 var Ease = Laya.Ease;
 
-window.alert = function(name){
-  var iframe = document.createElement("IFRAME");
-  iframe.style.display="none";
-  iframe.setAttribute("src", 'data:text/plain,');
-  document.documentElement.appendChild(iframe);
-  window.frames[0].window.alert(name);
-  iframe.parentNode.removeChild(iframe);
-};
+// window.alert = function(name){
+//   var iframe = document.createElement("IFRAME");
+//   iframe.style.display="none";
+//   iframe.setAttribute("src", 'data:text/plain,');
+//   document.documentElement.appendChild(iframe);
+//   window.frames[0].window.alert(name);
+//   iframe.parentNode.removeChild(iframe);
+// };
+// history.pushState('111',null,'#')
 
 var u = navigator.userAgent, app = navigator.appVersion;
 var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
@@ -221,6 +222,12 @@ function p2() {
 	var Event = laya.events.Event;
 	self.y=Laya.stage.height/2-Laya.stage.designHeight/2;
 
+	if(Laya.stage.height<1250){
+		self.y-=44
+		self.p2_t1.y+=44
+		self.p2s_t1.y+=44
+	}
+
 	self.p2_box2.visible=false;
 
 	self.p2_t1.scale(0,0);
@@ -291,6 +298,12 @@ function p3() {
 	var Event = laya.events.Event;
 	self.y=Laya.stage.height/2-Laya.stage.designHeight/2;
 
+	if(Laya.stage.height<1250){
+		self.y-=44
+		self.p3_t1.y+=44
+		self.p3s_t1.y+=44
+	}
+
 	self.p3_box2.visible=false;
 
 	self.p3_t1.scale(0,0);
@@ -341,6 +354,12 @@ function p4() {
 	
 	var Event = laya.events.Event;
 	self.y=Laya.stage.height/2-Laya.stage.designHeight/2;
+
+	if(Laya.stage.height<1250){
+		self.y-=44
+		self.p4_t1.y+=44
+		self.p4s_t1.y+=44
+	}
 
 	self.p4_box2.visible=false;
 
@@ -518,6 +537,11 @@ function p6() {
 	var Event = laya.events.Event;
 	self.y=Laya.stage.height/2-Laya.stage.designHeight/2;
 
+	if(Laya.stage.height<1250){
+		self.y+=44
+		$('#flag').css('top','11.56rem')
+	}
+
 	self.p6_box.visible=false;
 
 	self.num.text=0;
@@ -656,6 +680,7 @@ function p6() {
 				self['p6list_t'+(n+1)].text = saveArr[n];
 			}
 		}
+		console.log(saveArr)
 	}
 
 	// 删除
@@ -683,7 +708,6 @@ function p6() {
 		self.num.text=saveArr.length
 		Laya.SoundManager.playSound("media/del.mp3", 1);
 		openList()
-		// console.log(saveArr)
 	}
 
 	// 拖动
@@ -692,11 +716,11 @@ function p6() {
 	//移动坐标
 	var offsetY=0;
 	//当前选项
-	var active;
+	var active=self['p6list_b'+0];
 	//当前选项索引+1
-	var activeIndex;
+	var activeIndex=0;
 	//当前y
-	var activeY;
+	var activeY=616;
 
 	var value=0;
 
@@ -706,6 +730,7 @@ function p6() {
 	function dragDown(e){
 		// console.log('name:',e.target.name,spArr)
 		if(e.target.name=='b0'||e.target.name=='b1'||e.target.name=='b2'||e.target.name=='b3'||e.target.name=='b4'||e.target.name=='b5'){
+			if(saveArr.length==1)return
 			startY = e.stageY
 			activeIndex = e.target.name.substr(e.target.name.length-1,1)*1
 			active = self['p6list_b'+activeIndex]
@@ -878,6 +903,10 @@ function p7() {
 	var Event = laya.events.Event;
 	self.y=Laya.stage.height/2-Laya.stage.designHeight/2;
 
+	if(Laya.stage.height<1250){
+		self.y+=44
+	}
+
 	self.name.text=name;
 	self.photo.skin=photo;
 
@@ -967,6 +996,11 @@ function p8() {
 	
 	var Event = laya.events.Event;
 	self.y=Laya.stage.height/2-Laya.stage.designHeight/2;
+
+	if(Laya.stage.height<1250){
+		self.y+=22
+		 $(".p8_btn1,.p8_btn2").css("top","12.38rem");
+	}
 
 	console.log('保存页','RESIZE:'+Laya.stage.width,Laya.stage.height,'Browser:'+Laya.Browser.clientWidth,Laya.Browser.clientHeight,'isWebGL:'+Laya.Render.isWebGL,'stage:'+self.width,self.height)
 
@@ -1243,7 +1277,7 @@ function onAssetLoaded(texture) {
 	console.log("加载结束",texture);
 
 	if(Laya.stage.height<1300){
-		 $(".p8_btn1,.p8_btn2").css("top","12.68rem");
+		 $(".p8_btn1,.p8_btn2").css("top","12.78rem");
 	}
 
 	// Laya.stage.removeChild(loadView);
@@ -1254,6 +1288,7 @@ function onAssetLoaded(texture) {
 
 function loadEnd(){
 	if(loadNum<2)return
+	loadNum=0;
 	Tween.to(loadView,{alpha:0}, 600, Ease.linearIn, Handler.create(self, function(){
 		Laya.stage.removeChild(loadView);	
 	}), 300);

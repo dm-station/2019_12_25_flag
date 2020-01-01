@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":25,
-    "selecteID":22,
+    "selectedBox":1,
+    "selecteID":25,
     "props":{"width":750,"sceneColor":"#000000","height":1500},
     "nodeParent":-1,
     "label":"View",
@@ -39,6 +39,7 @@
             "compId":29,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":458,"x":17,"width":628,"var":"p2_t1","skin":"p2/p2_t1.png","pivotY":242,"pivotX":-41,"height":218},
                     "nodeParent":29,
@@ -52,6 +53,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":493,"x":99,"skin":"p2/p2_photo.png"},
                     "nodeParent":29,
@@ -65,6 +67,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":662,"x":215,"width":194,"var":"p2_t2","skin":"p2/p2_t2.png","pivotY":115,"pivotX":154,"height":97},
                     "nodeParent":29,
@@ -77,6 +80,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":1105,"x":51,"var":"p2_t4","skin":"p2/p2_t4.png"},
                     "nodeParent":29,
@@ -90,6 +94,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":616,"x":600,"width":36,"var":"p2_star","skin":"p2/p2_star.png","pivotY":24,"pivotX":23,"height":43},
                     "nodeParent":29,
@@ -102,6 +107,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":714,"x":177,"width":36,"var":"p2_star2","skin":"p2/p2_star2.png","pivotY":23,"pivotX":18,"height":42},
                     "nodeParent":29,
@@ -114,6 +120,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":1305,"x":377,"width":169,"var":"p2_btn","skin":"p2/p2_btn.png","pivotY":52,"pivotX":89,"height":108},
                     "nodeParent":29,
@@ -127,6 +134,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Panel",
                     "props":{"y":581,"x":747,"width":114,"var":"hand1","pivotY":71,"pivotX":111,"height":100},
                     "nodeParent":29,
@@ -138,6 +146,7 @@
                     "compId":32,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":0,"x":0,"width":114,"var":"p2_hand1","skin":"p2/p2_hand1.png","height":90},
                             "nodeParent":32,
@@ -152,6 +161,7 @@
                         }]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":955,"x":28,"width":95,"var":"p2_hand2","skin":"p2/p2_hand2.png","pivotY":84,"pivotX":28,"height":120},
                     "nodeParent":29,
