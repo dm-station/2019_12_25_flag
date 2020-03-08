@@ -1,2 +1,4 @@
 release
 *.psd
+node_modules
+dist
