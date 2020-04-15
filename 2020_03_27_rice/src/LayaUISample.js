@@ -104,8 +104,6 @@ function p1() {
 	// 	self._childs[i].y=parseInt(self._childs[i].y*scaleRateH);
 	// }
 
-	self.rule.visible = self.rule_btn.visible = false;
-	
 	self.p1_t2.alpha = self.p1_t3.alpha = self.p1_t4.alpha = 0;
 	self.light2.alpha = self.light3.alpha = self.light4.alpha = self.light5.alpha = self.light6.alpha = 0;
 	var T = Tween.to(self.p1_t2,{alpha:1}, 900, Ease.linearIn, null, 300);
@@ -128,14 +126,9 @@ function p1() {
 	sf(1,self.yun1,1.01,900)
 	sf(1,self.yun2,1.016,900)
 
-	self.rule_btn.on(Event.CLICK,this,function () {
-		self.rule.visible = true;
-	})
-	self.rule_x.on(Event.CLICK,this,function () {
-		self.rule.visible = false;
-	})
 	self.p1_jump.on(Event.CLICK,this,function () {
-		Laya.stage.addChildAt(new rank(), 1);
+		Laya.stage.removeChild(self);
+		Laya.stage.addChildAt(new end(), 0);
 	})
 
 	self.p1_btn.on(Event.CLICK,this,function () {
@@ -317,7 +310,8 @@ function p5() {
 	var Event = laya.events.Event;
 	self.y=Laya.stage.height/2-Laya.stage.designHeight/2;
 
-	self.p5_main.visible = false;
+	self.p5_main.visible = self.p6_box.visible = false;
+	self.p5_hand.alpha = 0;
 
 	self.p5_tips.y = -550;
 	self.p2_hand.visible = false;
@@ -337,6 +331,8 @@ function p5() {
 		Tween.to(self.p5_fe1,{alpha:1}, 800, Ease.linearIn, null, 300);
 		Tween.to(self.p5_fe2,{alpha:1}, 800, Ease.linearIn, null, 900);
 		Tween.to(self.p5_fe3,{alpha:1}, 800, Ease.linearIn, Handler.create(self,function(){
+			self.p5_hand.alpha = 1;
+			sf(1,self.p5_hand,0.9,500)
 			isShow = true;
 		}), 600);
 	})
@@ -381,15 +377,46 @@ function p5() {
 	function showText(){
 		if(!isShow)return;
 		isShow = false;
+		self.p5_hand.alpha = 0;
 		Tween.to(self.p5_text2,{alpha:1}, 800, Ease.linearIn, Handler.create(self,function(){
 			Tween.to(self.p5_people,{alpha:1}, 600, Ease.linearIn, Handler.create(self,function(){
 				Tween.to(self.p5_text1,{alpha:1}, 800, Ease.linearIn, Handler.create(self,function(){
-					Laya.stage.removeChild(self);
-					Laya.stage.addChildAt(new p7(), 0);
+					setTimeout(function() {
+						p52();
+					}, 1000);
 				}), 800);
 			}), 800);
 		}), 300);
 	}
+
+	for(var i6 = 2;i6<=6;i6++){
+		self['p6_t'+i6].alpha = 0;
+	}
+	function p52(){
+		self.bg.skin = 'img/p5bg2.jpg';
+		self.dai3.visible = self.p5_fe1.visible = self.p5_fe2.visible = self.p5_fe3.visible = false;
+		self.p5_people.visible = self.p5_text1.visible = self.p5_text2.visible = false;
+		self.p6_box.visible = true;
+		self.p5_hand.alpha = 1;
+		self.p5_hand.x = 340;
+		self.p5_hand.y = 674;
+	}
+	self.p6_t1.once(Event.CLICK,this,function(){
+		self.p5_hand.alpha = 0;
+		for(var n6 = 2; n6<=6; n6++){
+			var k6 = 0;
+			Tween.to(self['p6_t'+n6],{alpha:1}, 600, Ease.linearIn, Handler.create(self,function(){
+				k6++;
+				if(k6==5){
+					setTimeout(function() {
+						Laya.stage.removeChild(self);
+						Laya.stage.addChildAt(new p7(), 0);
+					}, 1500);
+				}
+				// console.log(n6,k6)
+			}),(n6-2)*1400);
+		}
+	})
 }
 
 function p7() {
@@ -458,9 +485,41 @@ function p8() {
 		});
 		Tween.to(self.p8_ship1,{x:-320}, 3200, Ease.linearIn, Handler.create(self,function(){
 			Laya.stage.removeChild(self);
-			Laya.stage.addChildAt(new photo(), 0);
+			Laya.stage.addChildAt(new end(), 0);
 		}), 500);
 	}
+}
+
+function end() {
+	endUI.super(this);
+	var self = this;
+	var Event = laya.events.Event;
+	self.y = Laya.stage.height/2 - Laya.stage.designHeight/2;
+
+	self.end_t1.alpha = 0;
+	Tween.to(self.end_t1,{alpha:1}, 800, Ease.linearIn, null, 300);
+	rotation(self.p1_bottom,360,0.3)
+	jump(self.end_btn,15,400,800);
+
+	alpha(0,self.light,0.3,600)
+
+	sf(1,self.yun1,1.01,900)
+	sf(1,self.yun2,1.016,900)
+
+	self.end_btn.once(Event.CLICK,this,function () {
+		Laya.stage.removeChild(self);
+		Laya.stage.addChildAt(new photo(), 0);
+	})
+
+	self.rule.visible = false;
+	self.end_rule.on(Event.CLICK,this,function () {
+		self.rule.visible = true;
+	})
+	self.rule_x.on(Event.CLICK,this,function () {
+		self.rule.visible = false;
+	})
+
+
 }
 
 function rectFun(obj,offset){
@@ -633,7 +692,7 @@ function photo() {
 			x = e.stageX;
 			y = e.stageY;
 			if(isDown){
-				console.log('mouseMoveX:',self.sex1_face.x)
+				// console.log('mouseMoveX:',self.sex1_face.x)
 				self.sex1_face.x+=mouseMoveX
 				self.sex1_face.y+=mouseMoveY
 				if(self.sex1_face.x>self.sex1_face.width){
@@ -653,25 +712,25 @@ function photo() {
 		//双指
 		if (points && points.length == 2){
 			
-			// var distance = getDistance(e.touches);
+			var distance = getDistance(e.touches);
 
-			// //判断当前距离与上次距离变化，确定是放大还是缩小
-			// var factor = 0.01;
+			//判断当前距离与上次距离变化，确定是放大还是缩小
+			var factor = 0.01;
 
-			// var X_= self.sex1_face.scaleX;
+			var X_= self.sex1_face.scaleX;
 
-			// this.sex1_face.scaleX += (distance - lastDistance) * factor;
-			// this.sex1_face.scaleY += (distance - lastDistance) * factor;
+			this.sex1_face.scaleX += (distance - lastDistance) * factor;
+			this.sex1_face.scaleY += (distance - lastDistance) * factor;
 
-			// if(self.sex1_face.scaleY <minScale){
-			// 	self.sex1_face.scaleX=minScale;
-			// 	self.sex1_face.scaleY=minScale;
-			// }else if(self.sex1_face.scaleY>maxScale){
-			// 	self.sex1_face.scaleX=maxScale;
-			// 	self.sex1_face.scaleY=maxScale;
-			// }
+			if(self.sex1_face.scaleY <minScale){
+				self.sex1_face.scaleX=minScale;
+				self.sex1_face.scaleY=minScale;
+			}else if(self.sex1_face.scaleY>maxScale){
+				self.sex1_face.scaleX=maxScale;
+				self.sex1_face.scaleY=maxScale;
+			}
 			
-			// lastDistance = distance;
+			lastDistance = distance;
 		
 		}
 
@@ -690,7 +749,7 @@ function photo() {
 		return distance;
 	}
 
-	self.share_poster.once(Event.CLICK,this,function () {
+	self.share_poster.on(Event.CLICK,this,function () {
 		alert('share_poster')
 	})
 
@@ -748,9 +807,6 @@ function rank() {
 	})
 
 }
-
-
-
 Laya.class(p1, "p1", p1UI);
 Laya.class(p2, "p2", p2UI);
 Laya.class(p3, "p3", p3UI);
@@ -758,6 +814,7 @@ Laya.class(p4, "p4", p4UI);
 Laya.class(p5, "p5", p5UI);
 Laya.class(p7, "p7", p7UI);
 Laya.class(p8, "p8", p8UI);
+Laya.class(end, "end", endUI);
 Laya.class(photo, "photo", photoUI);
 Laya.class(rank, "rank", rankUI);
 
@@ -780,6 +837,8 @@ var assets = [
 	{url:'img/p3bg.jpg',type:Laya.Loader.IMAGE},
 	{url:'img/p4bg.jpg',type:Laya.Loader.IMAGE},
 	{url:'img/p5bg.jpg',type:Laya.Loader.IMAGE},
+	{url:'img/p5bg1.jpg',type:Laya.Loader.IMAGE},
+	{url:'img/p5bg2.jpg',type:Laya.Loader.IMAGE},
 	{url:'img/p7bg.jpg',type:Laya.Loader.IMAGE},
 	{url:'img/p8bg1.jpg',type:Laya.Loader.IMAGE},
 	{url:'img/p8bg2.jpg',type:Laya.Loader.IMAGE},
@@ -790,8 +849,10 @@ var assets = [
 	{url:'res/atlas/p3.atlas',type:Laya.Loader.ATLAS},
 	{url:'res/atlas/p4.atlas',type:Laya.Loader.ATLAS},
 	{url:'res/atlas/p5.atlas',type:Laya.Loader.ATLAS},
+	{url:'res/atlas/p6.atlas',type:Laya.Loader.ATLAS},
 	{url:'res/atlas/p7.atlas',type:Laya.Loader.ATLAS},
 	{url:'res/atlas/p8.atlas',type:Laya.Loader.ATLAS},
+	{url:'res/atlas/end.atlas',type:Laya.Loader.ATLAS},
 	{url:'res/atlas/photo.atlas',type:Laya.Loader.ATLAS},
 	{url:'res/atlas/rank.atlas',type:Laya.Loader.ATLAS},
 ];
@@ -811,7 +872,7 @@ function loading() {
 // 加载结束侦听器
 function onAssetLoaded(texture) {
 	console.log("加载结束",texture);
-	// Laya.stage.addChildAt(new photo(),1);
+	// Laya.stage.addChildAt(new photo(),0);
 }
 
 // 加载进度侦听器

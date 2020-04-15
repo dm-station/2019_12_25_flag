@@ -33,6 +33,12 @@ P B9680947 vscroll$up.png
 P 7E990267 vscroll.png
 P E466EB1C vslider$bar.png
 P 2BFF7046 vslider.png
+D end
+P C5FF420B end_btn.png
+P 908DDE58 end_ping.png
+P BDACC64C end_rice.png
+P 46441AF3 end_rule.png
+P 20ACA581 end_t1.png
 D img
 D p1
 P 04784A6E light.png
@@ -41,7 +47,6 @@ P 4038D2C9 p1_bg1.png
 P 73CCB084 p1_bg2.png
 P E62164C8 p1_bottom.png
 P F9433F42 p1_btn.png
-P 9EC1BA10 p1_btn2.png
 P C7C11D35 p1_guan.png
 P CC83221C p1_jump.png
 P D0B02AD4 p1_rule.png
@@ -110,6 +115,13 @@ P FF02B373 p5_people.png
 P 7F65876F p5_text1.png
 P 643CA00E p5_text2.png
 P 27116BE6 p5_tips.png
+D p6
+P 2211B10A p6_ele.png
+P 0497A619 p6_niu.png
+P C70064FE p6_ren.png
+P 73F2BA14 p6_t1.png
+P B4D98ADE p6_t2.png
+P EEB20797 p6_t3.png
 D p7
 P BD424854 p7_left.png
 P 4D19324E p7_rice.png
