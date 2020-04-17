@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/camp/main",
+    "pages/index-/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#d6eeff",
+    "navigationBarTitleText": "30天打卡成长营",
+    "navigationBarTextStyle": "black"
+  }
+}
