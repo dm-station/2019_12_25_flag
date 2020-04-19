@@ -3,7 +3,7 @@
 <div id="container">
 
   <img class="camp" :src='img.camp'>
-  <!-- <img class="camp" :src='img.campbg'> -->
+  <img class="camp" :src='img.campbg'>
 
   <div id="main">
 
@@ -44,67 +44,108 @@
       <!-- 日历 -->
       <div class="calendar_box">
         <img class="calendar_bg" :src='img.calendar_bg'>
-        <img class="calendar_title" :src='img.calendar_title'>
-        <!-- 打卡统计 -->
-        <div class="calendar_score">
-          <p class="fl">你已入营01天</p>
-          <p class="fr">完成01天打卡</p>
-        </div>
+        <!-- 主题内容 -->
+        <div class="calendar_content">
+          <img class="calendar_title" :src='img.calendar_title'>
+          <!-- 打卡统计 -->
+          <div class="calendar_score">
+            <p class="fl">你已入营01天</p>
+            <p class="fr">完成01天打卡</p>
+          </div>
 
-        <!-- 选择月份 -->
-        <div class="calendar_sel none">
-          <img class="calendar_left fl" :src='img.calendar_left'>
-          <div class="sel_moneth fl">
-            <div class="fl">
-              <img class="month5" :src='img.month5'>
-              <p class="month5_p">5月</p>
+          <!-- 选择月份 -->
+          <div class="calendar_sel">
+            <img class="calendar_left fl" :src='img.calendar_left'>
+            <div class="sel_moneth fl">
+              <div class="fl">
+                <img class="month5" :src='img.month5'>
+                <p class="month5_p">5月</p>
+              </div>
+
+              <div class="fl">
+                <img class="month6" :src='img.month6'>
+                <p class="month6_p">6月</p>
+              </div>
             </div>
+            <img class="calendar_right fr" :src='img.calendar_right'>
+          </div>
 
-            <div class="fl">
-              <img class="month6" :src='img.month6'>
-              <p class="month6_p">6月</p>
+          <!-- 日期 -->
+          <div class="calendar_day">
+            <div class="day_small">Su</div>
+            <div class="day_small">Mo</div>
+            <div class="day_small">Tu</div>
+            <div class="day_small">We</div>
+            <div class="day_small">Th</div>
+            <div class="day_small">Fr</div>
+            <div class="day_small">Sa</div>
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+            <div><img :src='img.calendar_selected'><p>1</p></div>
+          </div>
+    
+          <!-- 礼品 -->
+          <div class="calendar_gift">
+            <img class="gift_bg" :src='img.gift_bg'>
+            <img class="add" :src='img.add'>
+
+            <div class="gift_box">
+              <img class="gift" :src='img.gift2'>
+              <img class="gift" :src='img.gift2'>
+              <img class="gift" :src='img.gift2'>
+              <img class="gift" :src='img.gift2'>
             </div>
+            
           </div>
-          <img class="calendar_right fr" :src='img.calendar_right'>
-        </div>
 
-        <!-- 日期 -->
-        <div class="calendar_day none">
-          <div class="day_small">Su</div>
-          <div class="day_small">Mo</div>
-          <div class="day_small">Tu</div>
-          <div class="day_small">We</div>
-          <div class="day_small">Th</div>
-          <div class="day_small">Fr</div>
-          <div class="day_small">Sa</div>
-          <div> </div>
-          <div> </div>
-          <div> </div>
-          <div>
-            <img :src='img.calendar_selected'>
-            <p>1</p>
-          </div>
         </div>
-  
-        <!-- 礼品 -->
-        <div class="calendar_gift none">
-          <img class="gift_bg" :src='img.gift_bg'>
-          <img class="add" :src='img.add'>
+        
+      </div>
 
-          <div class="gift_box">
-            <img class="gift" :src='img.gift2'>
-            <img class="gift" :src='img.gift2'>
-            <img class="gift" :src='img.gift2'>
-            <img class="gift" :src='img.gift2'>
-          </div>
-          
+      <!-- 图表 -->
+      <div id="chart">
+        <img class="chart" :src='img.chart'>
+        <div class="chart_box">
+          <div>每日</div>
+          <div>每月</div>
+          <div>每周</div>
         </div>
       </div>
+
+
     </div>
 
   </div>
-
-  
   
 </div>
   
@@ -140,7 +181,8 @@ export default {
         gift_bg: ExchangeData.getPath('/static/camp/gift_bg.png'),
         add: ExchangeData.getPath('/static/camp/add.png'),
         gift1: ExchangeData.getPath('/static/camp/gift1.png'),
-        gift2: ExchangeData.getPath('/static/camp/gift2.png')
+        gift2: ExchangeData.getPath('/static/camp/gift2.png'),
+        chart: ExchangeData.getPath('/static/camp/chart.png')
 
       },
       stage: ExchangeData.stage,
@@ -276,12 +318,13 @@ export default {
 
   }
   .calendar_bg{
-    position: absolute;
     width: 710rpx;
     height: 914rpx;
-    top: 142rpx;
-    left: 20rpx;
-    display: none;
+    margin-left: 20rpx;
+    padding-top: 65px;
+  }
+  .calendar_content{
+    margin-top: -1032rpx;
   }
   .calendar_title{
     width: 529rpx;
@@ -365,30 +408,43 @@ export default {
   }
 
   .calendar_gift{
-    position: relative;
+    overflow: hidden;
   }
   .gift_bg{
     width: 649rpx;
     height: 215rpx;
-    position: absolute;
-    left: 52rpx;
-    top: 30rpx;
+    margin: 30rpx 0 0 52rpx;
   }
   .add{
     width: 368rpx;
     height: 80rpx;
-    margin-top: 34rpx;
+    margin-top: -188rpx;
     margin-left: 195rpx;
   }
   .gift_box{
     margin-top: 59rpx;
     margin-left: 35rpx;
-    position: absolute;
   }
   .gift{
     width: 81rpx;
     height: 81rpx;
     float: left;
     margin-left: 36px;
+  }
+
+  .chart{
+    width: 750rpx;
+    height: 831rpx;
+  }
+  .chart_box{
+    margin-top: -831rpx;
+    width: 750rpx;
+    height: 831rpx;
+  }
+  .chart_box div{
+    width: 250rpx;
+    float: left;
+    height: 40rpx;
+    border-radius: 20rpx;
   }
 </style>
