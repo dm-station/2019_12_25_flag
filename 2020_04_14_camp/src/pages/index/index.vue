@@ -8,7 +8,15 @@
     <img class="p1_t2" :src='img.p1_t2'>
     <img class="p1_body" :src='img.p1_body'>
     <img class="p1_btn" :src='img.p1_btn' @click="test">
-    <p @click="join" style="margin-top:30rpx">{{stage.stageHeight}}</p>
+    <!-- <button class="info_btn" open-type="getUserInfo" @getuserinfo="getUserInfo"></button> -->
+    
+    <div class="jion" @click="join">
+      <p>直接入营{{stage.stageHeight}}</p>
+       <getUserInfo @get-info='getUserInfoSuccess' :opacity='0.1'></getUserInfo>
+    </div>
+
+    <!-- <button class="getPhoneNumber" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber"></button> -->
+    
   </div>
 
   
@@ -18,6 +26,7 @@
 
 <script>
 import ExchangeData from '../../logic/ExchangeData'
+import getUserInfo from '../../components/getUserInfo'
 
 export default {
   data () {
@@ -34,13 +43,15 @@ export default {
     }
   },
   components: {
+    getUserInfo
   },
   onReady: function (res) {
-
   },
   onLoad: function () {
-
   },
+  onShow: function () {
+  },
+
   onShareAppMessage: function (res) {
     return {
       title: '全新脉动 畅享美味',
@@ -50,10 +61,24 @@ export default {
 
   methods: {
     test (e) {
-      ExchangeData.showToast('儿童成长测试')
+      ExchangeData.showToast('敬请期待')
     },
     join () {
-      ExchangeData.showToast('直接入营')
+      // 线上流程---按钮隐藏
+      // 线下流程---登录，获取昵称，跳转打卡页
+      // ExchangeData.showToast('直接入营')
+      // wx.navigateTo({url: '../camp/main'})
+
+    },
+    getPhoneNumber (e) {
+      // 获取手机号
+      console.log(e.detail.errMsg)
+      console.log(e.detail.iv)
+      console.log(e.detail.encryptedData)
+    },
+    getUserInfoSuccess (value) {
+      ExchangeData.selected = 'camp'
+      wx.navigateTo({url: '../camp/main'})
     }
   }
 }
@@ -91,6 +116,12 @@ export default {
     height: 96rpx;
     margin: 108rpx 0 0 133rpx;
   }
+  .jion{
+    width: 483rpx;
+    height: 96rpx;
+    margin: 30rpx auto 0;
+    position: relative;
+  }
 
   .vf{
     overflow: hidden;
@@ -98,4 +129,11 @@ export default {
   .sf{
     overflow: auto;
   }
+
+  .getPhoneNumber{
+    width: 500rpx;
+    height: 200rpx;
+    background: red;
+  }
+ 
 </style>

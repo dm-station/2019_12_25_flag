@@ -12,11 +12,12 @@ const ExchangeData = new Vue({
       serverUrl: '',
       // serverUrl: 'https://cdn.campaign.realh5.cn/2020/maidong',
       userInfo: {
-        // nickName: '测试ABD',
-        // gender: '01',
         // avatarUrl: 'https://campaign.realh5.cn/_test2018/jdage/img/icon.png',
-        // servKey: '111',
-        // userId: '111'
+        // city: 'Chaoyang',
+        // country: 'China',
+        // gender:1
+        // language: "zh_CN"
+        // nickName: '测试ABD',
       },
       stage: {// 舞台信息
         // 舞台宽
@@ -29,7 +30,18 @@ const ExchangeData = new Vue({
         scaleRateH: 1,
         // 屏幕与设计尺寸比
         scaleRate: 0.5
-      }
+      },
+      // 当前选中的栏目，card=我的卡券，camp=30天训练营，welfare=专享福利，test=一分钟测试
+      selected: 'camp',
+      addtimestr: '2020-04-12', // 入营时间
+      clock_day: [// 打卡记录
+        '2020-04-12',
+        '2020-04-15',
+        '2020-04-16',
+        '2020-04-17',
+        '2020-04-23'
+      ]
+
     }
   },
   methods: {
@@ -44,12 +56,17 @@ const ExchangeData = new Vue({
     setUserInfo (obj) {
       if (this.userInfo === null) this.userInfo = {}
       for (let item in obj) {
-        console.log('setUserInfo', item, obj[item])
+        // console.log('setUserInfo', item, obj[item])
         this.$set(this.userInfo, item, obj[item])
       }
-      // wx.setStorageSync('userInfo', this.userInfo)
+      console.log('userInfo', this.userInfo)
+      // 本地存储
+      wx.setStorageSync('userInfo', this.userInfo)
     },
 
+    /**
+    * 本地存储
+    */
     saveUserInfo () {
       wx.setStorageSync('userInfo', this.userInfo)
     },
@@ -57,17 +74,17 @@ const ExchangeData = new Vue({
     /**
     * @method 显示消息提示框
     * @param {string} title 提示的内容。必选参数
+    * @param {number} duration 提示的显示时间，默认1500。可选参数
     * @param {boolean} mask 是否显示透明蒙层，防止触摸穿透，默认true。可选参数
     * @param {string} icon 图标，默认none，可选值为loading、success。可选参数
-    * @param {number} duration 提示的显示时间，默认1500。可选参数
     * @returns {Object}
     */
-    showToast (title, mask, icon, duration) {
+    showToast (title, duration, mask, icon) {
       wx.showToast({
         title: title,
+        duration: duration || 1500,
         mask: mask || true,
-        icon: icon || 'none',
-        duration: duration || 1500
+        icon: icon || 'none'
       })
     },
 

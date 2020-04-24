@@ -25,7 +25,7 @@ export default {
       mpvue.setStorageSync('logs', logs)
     }
     // 调用API从本地缓存中获取数据
-    ExchangeData.userInfo = wx.getStorageSync('userInfo') || null
+    ExchangeData.userInfo = wx.getStorageSync('userInfo') || {}
   },
   log () {
     console.log(`log at:${Date.now()}`)
@@ -39,6 +39,7 @@ export default {
   height: 100%;
   text-align: center;
   position: absolute;
+  background: #d9ebf7;
 }
 page {
   background-color: #F8F8F8;
@@ -65,6 +66,7 @@ page {
 .fr{
   float: right;
 }
+.clear{ clear:both}
 /* 原地翻转180 */
 .sknw{
   transform: rotate(180deg);
