@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/main",
     "pages/camp/main",
+    "pages/test/main",
     "pages/index-/main"
   ],
   "permission": {

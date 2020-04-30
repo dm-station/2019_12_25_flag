@@ -28,24 +28,21 @@ const BackendManager = new Vue({
     init () {
 
     },
-    // 用户登陆接口
+    // 用户login
     login () {
       wx.login({
         success: function (res) {
           ExchangeData.usercode = res.code
           if (res.code) {
             ExchangeData.setUserInfo(res)
-            wx.setStorageSync('userInfo', ExchangeData.userInfo)
             console.log('登陆成功=>ExchangeData.userInfo', ExchangeData.userInfo)
 
-            // 发起网络请求
+            // 请求自己的登录接口
             wx.request({
               url: BackendManager.onlineUrl + BackendManager.API.login,
-
               data: {
                 code: res.code
               },
-
               method: 'POST',
               header: {
                 'content-type': 'application/x-www-form-urlencoded' // 默认值
@@ -54,16 +51,12 @@ const BackendManager = new Vue({
               success: function (res) {
                 console.log(res)
                 if (res.data.code === 0) {
-                  ExchangeData.setUserInfo(res.data.resData)
-                  wx.setStorageSync('userInfo', ExchangeData.userInfo)
-                  console.log('登陆成功=>ExchangeData.userInfo', ExchangeData.userInfo)
                   ExchangeData.usertoken = res.data.data
                 } else {
                   res.data.code = res.code
                   console.log('登陆接口失败', res)
                   BackendManager.showInfo('登陆接口失败', JSON.stringify(res))
                 }
-
                 BackendManager.$emit(BackendManager.EVENT.login, res.data)
               },
 

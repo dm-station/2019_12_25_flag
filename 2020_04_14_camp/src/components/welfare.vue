@@ -8,6 +8,7 @@
     </div>
     
     <img class="welfare_icon" :src='img.welfare_icon'>
+    <p>{{select}}</p>
   </view>
 </template>
 
@@ -27,12 +28,8 @@ export default {
       selectIndex: '01'
     }
   },
-
-  onLoad () {
-    this.selectIndex = this.select
-  },
-  onShow () {
-    console.log('onShow----------------------------------------')
+  created: function () {
+    console.log('this is welfare ')
   },
 
   methods: {

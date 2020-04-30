@@ -9,6 +9,7 @@ const ExchangeData = new Vue({
   },
   data () {
     return {
+      env: 'online', // 区分线上线下，默认线上。online，offline
       serverUrl: '',
       // serverUrl: 'https://cdn.campaign.realh5.cn/2020/maidong',
       userInfo: {
@@ -32,8 +33,8 @@ const ExchangeData = new Vue({
         scaleRate: 0.5
       },
       // 当前选中的栏目，card=我的卡券，camp=30天训练营，welfare=专享福利，test=一分钟测试
-      selected: 'camp',
-      addtimestr: '2020-04-12', // 入营时间
+      boxName: 'camp',
+      addtimestr: '2020-04-2', // 入营时间
       clock_day: [// 打卡记录
         '2020-04-12',
         '2020-04-15',
@@ -53,6 +54,9 @@ const ExchangeData = new Vue({
       return this.serverUrl + url
     },
 
+    /**
+    * userInfo赋值并存入storage
+    */
     setUserInfo (obj) {
       if (this.userInfo === null) this.userInfo = {}
       for (let item in obj) {
@@ -112,7 +116,24 @@ const ExchangeData = new Vue({
           console.log(res.model, 'scaleRate:' + scaleRate, ',stageWidth:' + stageWidth, ',stageHeight:' + stageHeight, 'scaleRateW:' + stageWidth / 750, ',scaleRateH:' + stageHeight / 1206)
         }
       })
+    },
+
+    /**
+    * @method 获取手机信息
+    * @returns {Object}
+    */
+    subscribeMessage () {
+      wx.requestSubscribeMessage({
+        tmplIds: ['LpkIERwQU9M-H29AjeBXpVf6hgxiej0eKgt8-ZKzOL0'],
+        success (res) {
+          console.log('res', res)
+        },
+        fail (res) {
+          console.log('fail', res)
+        }
+      })
     }
+
   }
 
 })

@@ -25,7 +25,7 @@ export default {
       mpvue.setStorageSync('logs', logs)
     }
     // 调用API从本地缓存中获取数据
-    ExchangeData.userInfo = wx.getStorageSync('userInfo') || {}
+    ExchangeData.userInfo = wx.getStorageSync('userInfo') || null
   },
   log () {
     console.log(`log at:${Date.now()}`)
@@ -53,26 +53,19 @@ page {
   -o-transition: width 2s;
 }
 
-.none{
-  display: none;
-}
 .abs {
   position: absolute;
   top: 0;
 }
-.fl{
-  float: left;
-}
-.fr{
-  float: right;
-}
+.none{display: none; }
+.fl{float: left;}
+.fr{float: right;}
 .clear{ clear:both}
+.po{pointer-events: none;}
+image{display: block;}
 /* 原地翻转180 */
 .sknw{
   transform: rotate(180deg);
-}
-image{
-  display: block;
 }
 *{
   /* 必须指定一个字体，否则安卓机数字类型会跟随手机设定字体执行，导致宽窄不一 */

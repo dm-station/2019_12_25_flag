@@ -5,8 +5,8 @@
   <div id="main">
     
     <img class="camp" :src='img.camp'>
-    <img v-if="selected=='welfare'" class="welfare" mode="widthFix" src='/static/welfare/welfare.jpg'>
-    <!-- <img v-if="selected=='camp'" class="camp" :src='img.campbg'> -->
+    <!-- <img :hidden="boxName!=='camp'" class="welfare" mode="widthFix" src='/static/welfare/welfare.jpg'> -->
+    <!-- <img :hidden="boxName!=='camp'" class="camp" :src='img.campbg'> -->
 
     <swiper class="banner" :indicator-dots="swiper.indicatorDots" :indicator-color='swiper.indicatorColor' :autoplay='swiper.autoplay' 
     :indicator-active-color='swiper.activeColor' :circular='swiper.circular'>
@@ -19,15 +19,15 @@
 
     <div id="icon">
       <div class="icon_cen">
-        <img class="icon1" @click="icon('card')" :style="{opacity:selected=='card'?0.3:1}" :src='img.icon1'>
-        <img class="icon2" @click="icon('camp')" :style="{opacity:selected=='camp'?0.3:1}" :src='img.icon2'>
-        <img class="icon3" @click="icon('welfare')" :style="{opacity:selected=='welfare'?0.3:1}" :src='img.icon3'>
-        <img class="icon4" @click="icon('test')" :style="{opacity:selected=='test'?0.3:1}" :src='img.icon4'>
+        <img class="icon1" @click="boxChange('card')" :style="{opacity:boxName=='card'?0.3:1}" :src='img.icon1'>
+        <img class="icon2" @click="boxChange('camp')" :style="{opacity:boxName=='camp'?0.3:1}" :src='img.icon2'>
+        <img class="icon3" @click="boxChange('welfare')" :style="{opacity:boxName=='welfare'?0.3:1}" :src='img.icon3'>
+        <img class="icon4" @click="boxChange('test')" :style="{opacity:boxName=='test'?0.3:1}" :src='img.icon4'>
       </div>
       <img class="icon_bg" :src='img.icon_bg'>
     </div>
 
-    <div v-if="selected=='camp'" id="camp_box">
+    <div :class="[boxName=='camp'?'':'none']" id="camp_box">
       <img class="rule_btn" :src='img.rule_btn'>
       <img class="photo_bg" :src='img.photo_bg'>
       <img class="photo" :src='img.photo'>
@@ -104,7 +104,7 @@
           </div>
           
           <!-- 点此加入新记录 -->
-          <img class="add" :src='img.add'>
+          <img class="add" @click="add()" :src='img.add'>
           <!-- 礼盒 -->
           <div class="gift_box">
             <img class="gift" :src='img.gift2'>
@@ -122,14 +122,15 @@
       <div id="chart" class="">
         <div class="chart_con">
           <div class="chart_cli">
-            <div @click="chart('day')" :class="[selTime=='day'?'charted':'']">每日</div>
-            <div @click="chart('month')" :class="[selTime=='month'?'charted':'']">每月</div>
-            <div @click="chart('week')" :class="[selTime=='week'?'charted':'']">每周</div>
+            <div @click="timeChange('day')" :class="[timeSel=='day'?'timeed':'']">每日</div>
+            <div @click="timeChange('week')" :class="[timeSel=='week'?'timeed':'']">每周</div>
+            <div @click="timeChange('month')" :class="[timeSel=='month'?'timeed':'']">每月</div>
           </div>
 
           <p>平均标准：</p>
           <p class="chart_desc">{{babyInfo.name}}的宝宝：</p>
           <canvas canvas-id="myCanvas"></canvas>
+          <!-- <chart :opacity='.9'></chart> -->
         </div>
         <!-- 折线 -->
         
@@ -157,9 +158,25 @@
 
     </div>
     
-    <welfare v-if="selected=='welfare'"></welfare>
+    <view id="welfare" :class="[boxName=='welfare'?'':'none']">
+      <img class="welfare_bg" :src='welfaer.welfare_bg'>
 
-
+      <div class="welfare_box">
+        <img class="welfare1" :src='welfaer.welfare1'>
+        <img class="welfare1" :src='welfaer.welfare1'>
+      </div>
+      
+      <img class="welfare_icon" :src='welfaer.welfare_icon'>
+      <p>{{boxName}}</p>
+    </view>
+    <view id="welfare" :class="[boxName=='card'?'':'none']">
+        <p>{{boxName}}</p>
+    </view>
+    <view id="welfare" :class="[boxName=='test'?'':'none']">
+        <p>{{boxName}}</p>
+    </view>
+  
+    
   </div>
   
 </div>
@@ -168,7 +185,9 @@
 
 <script>
 import ExchangeData from '../../logic/ExchangeData'
+// import BackendManager from '../../logic/BackendManager'
 import welfare from '../../components/welfare'
+import chart from '../../components/chart'
 
 export default {
   data () {
@@ -222,55 +241,54 @@ export default {
         ExchangeData.getPath('/static/camp/expert1.png'),
         ExchangeData.getPath('/static/camp/expert1.png')
       ],
-      selected: null,
+      boxName: 'camp',
       babyInfo: {
         name: 'XXX',
         age: '4',
         weight: '16.6',
         height: '104'
       },
-      selTime: 'month', // month月，day日，week周
-      dayArr: []// 日历数据
+      timeSel: 'day', // month月，day日，week周
+      dayArr: [], // 日历数据
+      lines: [0, 1, 2, 3, 4, Math.floor(Math.random() * 5)], // 折线图数据
+      welfaer: {
+        welfare_bg: ExchangeData.getPath('/static/welfare/welfare_bg.png'),
+        welfare_icon: ExchangeData.getPath('/static/welfare/welfare_icon.png'),
+        welfare1: ExchangeData.getPath('/static/welfare/welfare1.png')
+      }
 
     }
   },
   components: {
-    welfare
+    welfare,
+    chart
   },
   onReady: function (res) {
   },
   onLoad: function () {
-  },
-  onShow: function () {
     this.img.photo = ExchangeData.userInfo.avatarUrl
     this.babyInfo.name = ExchangeData.userInfo.nickName
-    this.selected = ExchangeData.selected
 
-    let s = ExchangeData.stage.scaleRate
-    let posX = [0 * s, 110 * s, 214 * s, 319 * s, 419 * s, 519 * s]
-    let posY = [270 * s, 218 * s, 164 * s, 109 * s, 58 * s, 0 * s]
+    this.boxName = ExchangeData.boxName
+    if (this.boxName === 'camp') { // 30天成长营初始化折线图
+      this.draw(this.lines)
+    }
 
-    const ctx = wx.createCanvasContext('myCanvas')
+    if (new Date().getMonth() + 1 === 5) { // 初始化按钮状态，5月和6月
+      this.img.month5 = ExchangeData.getPath('/static/camp/month5.png')
+      this.img.month6 = ExchangeData.getPath('/static/camp/month6.png')
+    } else if (new Date().getMonth() + 1 === 6) {
+      this.img.month5 = ExchangeData.getPath('/static/camp/month5s.png')
+      this.img.month6 = ExchangeData.getPath('/static/camp/month6s.png')
+    } else {
+      this.img.month5 = ExchangeData.getPath('/static/camp/month5s.png')
+      this.img.month6 = ExchangeData.getPath('/static/camp/month6.png')
+    }
+    // 使用当月数据初始化日历
+    this.getMonthDaysCurrent(new Date().getFullYear(), new Date().getMonth())
+  },
+  onShow: function () {
 
-    // 开始绘制
-    ctx.beginPath()
-    // 设置描边颜色
-    ctx.setStrokeStyle('#000')
-    // 设置线条的宽度
-    ctx.setLineWidth(1)
-    // 定义直线的起点坐标为(10,10)
-    ctx.moveTo(posX[0], posY[0])
-    // 折线的折点坐标
-    ctx.lineTo(posX[1], posY[4])
-    ctx.lineTo(posX[2], posY[3])
-    ctx.lineTo(posX[3], posY[3])
-    ctx.lineTo(posX[4], posY[2])
-    ctx.lineTo(posX[5], posY[5])
-    // 开始绘制
-    ctx.stroke()
-    ctx.draw()
-    // 结束绘制
-    ctx.closePath()
   },
 
   methods: {
@@ -278,29 +296,52 @@ export default {
       let nameChange = e.mp.detail.value
       console.log(nameChange)
     },
-    icon (val) {
-      if (val === 'card' || val === 'test') {
-        ExchangeData.showToast('暂未开放')
-        return
-      }
-      this.selected = ExchangeData.selected = val
-      console.log('selected', val, this.selected, ExchangeData.selected)
-    },
-    chart (val) {
-      this.selTime = val
-      console.log('日月周', val, this.selTime)
+    boxChange (val) {
+      // if (val === 'card' || val === 'test') {
+      //   ExchangeData.showToast('暂未开放')
+      //   return
+      // }
+      this.boxName = ExchangeData.boxName = val
+
+      // 清空画布
+      let s = ExchangeData.stage.scaleRate
+      const ctx = wx.createCanvasContext('myCanvas')
+      ctx.clearRect(0, 0, 560 * s, 335 * s)
+      ctx.draw()
+      // 绘制上次画布
+      this.draw(this.lines)
+      console.log('boxName：', val)
     },
     getMonth (month) {
-      console.log(month, 'month', new Date('2020-05-01').toLocaleDateString())
-      this.getMonthDaysCurrent(new Date('2020-04-01'))
+      if (month === '5') {
+        this.img.month5 = ExchangeData.getPath('/static/camp/month5.png')
+        this.img.month6 = ExchangeData.getPath('/static/camp/month6.png')
+      } else {
+        this.img.month5 = ExchangeData.getPath('/static/camp/month5s.png')
+        this.img.month6 = ExchangeData.getPath('/static/camp/month6s.png')
+      }
+      this.getMonthDaysCurrent(new Date().getFullYear(), month - 1)
     },
-    // 获取当前数据
-    getMonthDaysCurrent (e) {
-      let year = e.getFullYear()// 年
-      let month = e.getMonth() + 1 // 月(0-11)
-      let date = e.getDate()// 日
-      let week = e.getDay() // 周(星期天为 0, 星期一为 1)
-      // 初始年月下的天数(即下个月0号=当月最后一天)
+    // 点此加入新记录
+    add () {
+      let date = this.formatDate(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate())
+      console.log(date)
+    },
+    /**
+    * @method 获取指定年月的数据，没有参数将取当前月的数据
+    * @param {string} year 年。必选参数
+    * @param {string} month 月，0-11。必选参数
+    * @param {string} date 日，1-31。可选参数
+    * @returns {Object}
+    */
+    getMonthDaysCurrent (setYear, setMonth, setDate) {
+      let now = setYear ? new Date(setYear, setMonth, setDate || '1') : new Date()
+
+      let year = now.getFullYear()// 年
+      let month = now.getMonth() + 1 // 月(0-11)
+      let date = now.getDate()// 日
+      let week = now.getDay() // 周（星期天为 0, 星期一为 1）
+      // 月一共有多少天数（即下个月0号 = 当月最后一天）
       let days = new Date(year, month, 0).getDate()
 
       let firstDayDate = new Date(year, month - 1, 1) // 当月1号
@@ -309,31 +350,32 @@ export default {
       let lastDate = new Date(year, month - 1, days)// 当月最后一天
       let lastDay = lastDate.getDay() // 当月最后一天对应的星期
 
-      console.log('年', year, '月', month, '日', date, ' week', week, 'days', days, 'firstDay', firstDay, 'lastDay', lastDay)
+      console.log('year:', year, 'month:', month, 'date:', date, ' week:', week, 'days:', days, 'firstDay:', firstDay, 'lastDay:', lastDay)
 
       let calendarTitle = this.formatDate(year, month, date)
-      console.log(calendarTitle)
+      console.log('calendarTitle:', calendarTitle)
 
       let calendarDays = []
 
       // 上个月显示的天数及日期
       let before = (firstDay + 6) % 7
       for (let i = before - 1; i >= 0; i--) {
+        // 上月的date
         let date = new Date(year, month - 1, -i)
-        console.log(i, month - 1, date.toLocaleDateString())
+        console.log(i, date.toLocaleDateString(), date.getMonth() + 1)
         calendarDays.push({
           'year': date.getFullYear(),
           'month': date.getMonth() + 1,
           'date': date.getDate(),
           'week': date.getDay(),
           'title': this.formatDate(date.getFullYear(), date.getMonth() + 1, date.getDate()),
-          'current': false, // 不在当月
-          'selected': false // 当天
+          'current': false,
+          'selected': false
         })
       }
-      console.log(calendarDays)
+      // console.log(calendarDays)
 
-      // 当月显示的日期
+      // 当月数据
       for (let i = 1; i <= days; i++) {
         calendarDays.push({
           'year': year,
@@ -341,10 +383,12 @@ export default {
           'date': i,
           'week': new Date(year, month - 1, i).getDay(),
           'title': this.formatDate(year, month, i),
-          'current': true,
-          'selected': i === date && calendarTitle === this.formatDate(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate())// 判断当前日期
+          // 年月相同标记为当月
+          'current': new Date().getFullYear() === year && new Date().getMonth() + 1 === month,
+          // 年月日相同标记为当日
+          'selected': new Date().getFullYear() === year && new Date().getMonth() + 1 === month && new Date().getDate() === i
         })
-        console.log(this.formatDate(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate()), i, date)
+        // console.log(new Date().getFullYear() === year && new Date().getMonth() + 1 === month && new Date().getDate() === i, i)
       }
 
       // 下个月显示的天数及日期
@@ -365,23 +409,27 @@ export default {
 
       this.calendarInit(calendarDays)
     },
-    // 年月日转换格式
+    /**
+    * 格式化年月日
+    */
     formatDate (year, month, date) {
       return year + '-' + (month > 9 ? month : '0' + month) + '-' + (date > 9 ? date : '0' + date)
     },
-    // 初始化日历状态
+    /**
+    * 初始化日历状态
+    */
     calendarInit (calendarDays) {
       let data = calendarDays
       let add = ExchangeData.addtimestr// 入营时间
       let signed = ExchangeData.clock_day// 已签到日期
       // let str2
-      console.log('add', add, data[7].title)
+      console.log('add:', add, 'title:', data[7].title)
       // 处理日历状态
       for (let i = 0; i < data.length; i++) {
         let str = data[i]
 
-        // 当月并且大于等于入营日期标记为可以签到
-        if (new Date(str.title).getTime() >= new Date(add).getTime() && str.current) {
+        // 当月&&大于等于入营日期&&小于等于当天日期可以签到
+        if (new Date(str.title).getTime() >= new Date(add).getTime() && str.current && new Date(str.title).getTime() <= new Date().getTime()) {
           data[i].sel = true
         } else {
           data[i].sel = false
@@ -390,7 +438,7 @@ export default {
         for (let j = 0; j < signed.length; j++) {
           if (new Date(str.title).getTime() === new Date(signed[j]).getTime()) {
             data[i].signed = true
-            console.log('title', str.title)
+            console.log('signed:', str.title)
           }
         }
       }
@@ -411,6 +459,43 @@ export default {
         this.$set(this.dayArr[index], 'signed', true)
         ExchangeData.showToast(this.dayArr[index].title + '打卡', 800)
       }
+    },
+    /**
+    * 折线图选择日月周
+    */
+    timeChange (val) {
+      this.timeSel = val
+      console.log('日月周：', val, this.timeSel)
+
+      this.lines = [0, 1, 2, 3, 4, Math.floor(Math.random() * 5)]
+      this.draw(this.lines)
+    },
+    draw (lines) {
+      let arr = [270, 218, 164, 109, 58, 0]
+      let s = ExchangeData.stage.scaleRate
+      let posX = [0 * s, 110 * s, 214 * s, 319 * s, 419 * s, 519 * s]
+      let posY = [arr[lines[0]] * s, arr[lines[1]] * s, arr[lines[2]] * s, arr[lines[3]] * s, arr[lines[4]] * s, arr[lines[5]] * s]
+
+      const ctx = wx.createCanvasContext('myCanvas')
+      // 开始绘制
+      ctx.beginPath()
+      // 设置描边颜色
+      ctx.setStrokeStyle('#000')
+      // 设置线条的宽度
+      ctx.setLineWidth(1)
+      // 定义直线的起点坐标为(10,10)
+      ctx.moveTo(posX[0], posY[0])
+      // 折线的折点坐标
+      ctx.lineTo(posX[1], posY[4])
+      ctx.lineTo(posX[2], posY[3])
+      ctx.lineTo(posX[3], posY[3])
+      ctx.lineTo(posX[4], posY[2])
+      ctx.lineTo(posX[5], posY[5])
+      // 开始绘制
+      ctx.stroke()
+      ctx.draw()
+      // 结束绘制
+      ctx.closePath()
     }
   }
 }
@@ -418,324 +503,350 @@ export default {
 
 <style scoped>
 
-  #main{
-    width: 100%;
-    position: absolute;
-    top: 0;
-    /* 短页面超出隐藏 */
-    overflow: hidden;
-  }
-  .camp{
-    width: 750rpx;
-    height: 3578rpx;
-    position: absolute;
-  }
-  .welfare{
-    width: 750rpx;
-    position: absolute;
-    z-index: -1;
-  }
-  .banner{
-    width: 100%;
-    height: 422rpx;
-  }
-  .slide-banner{
-    width: 100%;
-    height: 422rpx;
-  }
-  #icon{
-    margin-top: -7px;
-    position: relative;
-    z-index: 1;
-  }
-  .icon_bg{
-    width: 100%;
-    height: 255rpx;
-  }
-  .icon_cen{
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    width: 750rpx;
-  }
-  .icon1,.icon2,.icon3,.icon4{
-    width: 175rpx;
-    height: 166rpx;
-    margin-top: 38rpx;
-  }
-  #camp_box{
-    position: relative;
-  }
-  .rule_btn{
-    width: 142rpx;
-    height: 80rpx;
-    position: absolute;
-    left: 32rpx;
-  }
-  .photo_bg{
-    width: 541rpx;
-    height: 529rpx;
-    position: absolute;
-    top: -150rpx;
-    left: 111rpx;
-  }
-  .photo{
-    width: 162rpx;
-    height: 162rpx;
-    position: absolute;
-    top: 26rpx;
-    left: 294rpx;
-    border-radius: 50%;
-  }
-  .name,.name1{
-    width: 418rpx;
-    position: absolute;
-    top: 212rpx;
-    color: #214e9a;
-    font-size: 22rpx;
-    text-align: right;
-  }
-  .name{
-    top: 204rpx;
-    width: 350rpx;
-  }
-  .modify_btn{
-    width: 80rpx;
-    height: 80rpx;
-    position: absolute;
-    top: 180rpx;
-    left: 411rpx;
-  }
-  #baby_box{
-    padding: 260rpx 70rpx 0;
-  }
-  .baby_info{
-    width: 602rpx;
-    height: 53rpx;
-    font-weight: bold;
-  }
-  .inp {
-    font-size: 19rpx;
-    color: #214e9a;
-    float: left;
-    width: 160rpx;
-    padding-left: 36rpx;
-    text-align: left;
-    margin-top: -42rpx;
-    height: 50rpx;
-  }
-  .inp p{
-    float: left;
-    height: 50rpx;
-  }
-  .inp input{
-    float: left;
-    width: 50rpx;
-    height: 50rpx;
-    margin-top: -12rpx;
-    text-align: center;
-  }
-  #calendar_box{
-    position: relative;
-  }
-  .calendar_bg{
-    width: 710rpx;
-    height: 1006rpx;
-    margin-left: 20rpx;
-  }
-  .calendar_content{
-    position: absolute;
-    top: 174rpx;
-  }
-  .calendar_score{
-    width: 660rpx;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  .calendar_score p{
-    width: 243rpx;
-    height: 51rpx;
-    color: #214e9a;
-    background-color: #ecf7ff;
-    font-size: 32rpx;
-    border-radius: 34rpx;
-  }
+#main{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  /* 短页面超出隐藏 */
+  overflow: hidden;
+}
+.camp{
+  width: 750rpx;
+  height: 3578rpx;
+  position: absolute;
+}
+.welfare{
+  width: 750rpx;
+  position: absolute;
+  z-index: -1;
+}
+.banner{
+  width: 100%;
+  height: 422rpx;
+}
+.slide-banner{
+  width: 100%;
+  height: 422rpx;
+}
+#icon{
+  margin-top: -7px;
+  position: relative;
+  z-index: 1;
+}
+.icon_bg{
+  width: 100%;
+  height: 255rpx;
+}
+.icon_cen{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 750rpx;
+}
+.icon1,.icon2,.icon3,.icon4{
+  width: 175rpx;
+  height: 166rpx;
+  margin-top: 38rpx;
+}
+#camp_box{
+  position: relative;
+}
+.rule_btn{
+  width: 142rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 32rpx;
+}
+.photo_bg{
+  width: 541rpx;
+  height: 529rpx;
+  position: absolute;
+  top: -150rpx;
+  left: 111rpx;
+}
+.photo{
+  width: 162rpx;
+  height: 162rpx;
+  position: absolute;
+  top: 26rpx;
+  left: 294rpx;
+  border-radius: 50%;
+}
+.name,.name1{
+  width: 418rpx;
+  position: absolute;
+  top: 212rpx;
+  color: #214e9a;
+  font-size: 22rpx;
+  text-align: right;
+}
+.name{
+  top: 204rpx;
+  width: 350rpx;
+}
+.modify_btn{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  top: 180rpx;
+  left: 411rpx;
+}
+#baby_box{
+  padding: 260rpx 70rpx 0;
+}
+.baby_info{
+  width: 602rpx;
+  height: 53rpx;
+  font-weight: bold;
+}
+.inp {
+  font-size: 19rpx;
+  color: #214e9a;
+  float: left;
+  width: 160rpx;
+  padding-left: 36rpx;
+  text-align: left;
+  margin-top: -42rpx;
+  height: 50rpx;
+}
+.inp p{
+  float: left;
+  height: 50rpx;
+}
+.inp input{
+  float: left;
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: -12rpx;
+  text-align: center;
+}
+#calendar_box{
+  position: relative;
+}
+.calendar_bg{
+  width: 710rpx;
+  height: 1006rpx;
+  margin-left: 20rpx;
+}
+.calendar_content{
+  position: absolute;
+  top: 174rpx;
+}
+.calendar_score{
+  width: 660rpx;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.calendar_score p{
+  width: 243rpx;
+  height: 51rpx;
+  color: #214e9a;
+  background-color: #ecf7ff;
+  font-size: 32rpx;
+  border-radius: 34rpx;
+}
 
-  .calendar_sel{
-    overflow: hidden;
-    width: 540rpx;
-    margin: 27rpx auto 0;
-  }
-  .calendar_left{
-    width: 80rpx;
-    height: 80rpx;
-  }
-  .calendar_right{
-    width: 80rpx;
-    height: 80rpx;
-  }
-  .sel_moneth{
-    padding-left: 52rpx;
-    padding-top: 11rpx;
-  }
-  .month5,.month6{
-    width: 135rpx;
-    height: 64rpx;
-  }
-  .month5_p,.month6_p{
-    font-size: 36rpx;
-    float: left;
-    width: 135rpx;
-    height: 40rpx;
-    margin-top: -67rpx;
-    color: #ffffff;
-    font-weight: bold;
-    line-height: 64rpx;
-  }
-  .calendar_day{
-    padding-top: 12rpx;
-    padding-left: 40rpx;
-    width: 700rpx;
-    height: 348rpx;
-  }
-  .calendar_day div{
-    float: left;
-    width: 95rpx;
-    height: 58rpx;
-  }
-  .calendar_day .day_small{
-    font-size: 36rpx;
-  }
-  .calendar_day div img{
-    width: 52rpx;
-    height: 54rpx;
-    margin-left: 30rpx;
-  }
-  .calendar_day div p{
-    font-size: 46rpx;
-    line-height: 60rpx;
-    margin-top: -60rpx;
-  }
-    /* 不可打卡颜色 */
-  .color_gray{
-    color: #9c9c9c;
-  }
-  /* 可打卡颜色 */
-  .color_blue{
-    color: #064d98;
-  }
-  /* 当天的颜色 */
-  .color_yellow{
-    color: #cea564;
-  }
-  .gift_bg{
-    width: 649rpx;
-    height: 215rpx;
-    margin: 30rpx 0 0 52rpx;
-  }
-  .add{
-    width: 368rpx;
-    height: 80rpx;
-    margin-left: 195rpx;
-  }
-  .gift_box{
-    margin-top: 95rpx;
-    margin-left: 35rpx;
-    overflow: hidden;
-  }
-  .gift{
-    width: 81rpx;
-    height: 81rpx;
-    float: left;
-    margin-left: 36px;
-  }
+.calendar_sel{
+  overflow: hidden;
+  width: 540rpx;
+  margin: 27rpx auto 0;
+}
+.calendar_left{
+  width: 80rpx;
+  height: 80rpx;
+}
+.calendar_right{
+  width: 80rpx;
+  height: 80rpx;
+}
+.sel_moneth{
+  padding-left: 52rpx;
+  padding-top: 11rpx;
+}
+.month5,.month6{
+  width: 135rpx;
+  height: 64rpx;
+}
+.month5_p,.month6_p{
+  font-size: 36rpx;
+  float: left;
+  width: 135rpx;
+  height: 40rpx;
+  margin-top: -67rpx;
+  color: #ffffff;
+  font-weight: bold;
+  line-height: 64rpx;
+}
+.calendar_day{
+  padding-top: 12rpx;
+  padding-left: 40rpx;
+  width: 700rpx;
+  height: 348rpx;
+}
+.calendar_day div{
+  float: left;
+  width: 95rpx;
+  height: 58rpx;
+}
+.calendar_day .day_small{
+  font-size: 36rpx;
+}
+.calendar_day div img{
+  width: 52rpx;
+  height: 54rpx;
+  margin-left: 30rpx;
+}
+.calendar_day div p{
+  font-size: 46rpx;
+  line-height: 60rpx;
+  margin-top: -60rpx;
+}
+  /* 不可打卡颜色 */
+.color_gray{
+  color: #9c9c9c;
+}
+/* 可打卡颜色 */
+.color_blue{
+  color: #064d98;
+}
+/* 当天的颜色 */
+.color_yellow{
+  color: #cea564;
+}
+.gift_bg{
+  width: 649rpx;
+  height: 215rpx;
+  margin: 30rpx 0 0 52rpx;
+}
+.add{
+  width: 368rpx;
+  height: 80rpx;
+  margin-left: 195rpx;
+}
+.gift_box{
+  margin-top: 95rpx;
+  margin-left: 35rpx;
+  overflow: hidden;
+}
+.gift{
+  width: 81rpx;
+  height: 81rpx;
+  float: left;
+  margin-left: 36px;
+}
 
-  #chart{
-    margin-top: -18rpx;
-    position: relative;
-  }
-  .chart{
-    width: 750rpx;
-    height: 892rpx;
-  }
-  .chart_con{
-    top: 56rpx;
-    position: absolute;
-  }
-  .chart_cli{
-    width: 602rpx;
-    margin-left: 74rpx;
-  }
-  
-  .charted{/* 日月周选中状态 */
-    color: #fff !important;
-    background: #234f9b;
-  }
-  .chart_cli div{
-    width: 200rpx;
-    float: left;
-    height: 50rpx;
-    border-radius: 20rpx;
-    font-size: 24rpx;
-    color: #234f9b;
-    line-height: 50rpx;
-    font-weight: bold;
-  }
-  .chart_con > p{
-    margin-top: 128rpx;
-    width: 625rpx;
-    text-align: right;
-    color: #214e9a;
-    font-size: 15rpx;
-  }
-  .chart_desc{
-    margin-top: 12rpx !important;
-  }
-  .chart_con canvas{
-    width: 560rpx;
-    height: 335rpx;
-    position: absolute;
-    top: 190rpx;
-    left: 125rpx;
-  }
-  #tips{
-    margin-top: -242rpx;
-  }
-  #tips .tips{
-    width: 630rpx;
-    height: 178rpx;
-    margin: 0 auto;
-  }
-  #tips .more{
-    width: 533rpx;
-    height: 280rpx;
-    margin-left: 50rpx;
-  }
-  #tips .hand{
-    width: 90rpx;
-    height: 91rpx;
-    margin-top: -116rpx;
-    margin-left: 542rpx;
-  }
-  .expert_logo{
-    width: 363rpx;
-    height: 57rpx;
-    margin-top: 110rpx;
-    margin-left: 36rpx;
-  }
-  #bottom{
-    margin-top: 30rpx;
-    margin-left: 44rpx;
-  }
-  .bottom{
-    width: 680rpx;
-    height: 289rpx;
-  }
-  #bottom .expert_mask{
-    width: 750rpx;
-    height: 359rpx;
-    margin-top: -320rpx;
-    margin-left: -44rpx;
-    position: absolute;
-  }
+#chart{
+  margin-top: -18rpx;
+  position: relative;
+}
+.chart{
+  width: 750rpx;
+  height: 892rpx;
+}
+.chart_con{
+  top: 56rpx;
+  position: absolute;
+}
+.chart_cli{
+  width: 602rpx;
+  margin-left: 74rpx;
+}
+
+.timeed{/* 日月周选中状态 */
+  color: #fff !important;
+  background: #234f9b;
+}
+.chart_cli div{
+  width: 200rpx;
+  float: left;
+  height: 50rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  color: #234f9b;
+  line-height: 50rpx;
+  font-weight: bold;
+}
+.chart_con > p{
+  margin-top: 128rpx;
+  width: 625rpx;
+  text-align: right;
+  color: #214e9a;
+  font-size: 15rpx;
+}
+.chart_desc{
+  margin-top: 12rpx !important;
+}
+.chart_con canvas{
+  width: 560rpx;
+  height: 335rpx;
+  position: absolute;
+  top: 190rpx;
+  left: 125rpx;
+}
+#tips{
+  margin-top: -242rpx;
+}
+#tips .tips{
+  width: 630rpx;
+  height: 178rpx;
+  margin: 0 auto;
+}
+#tips .more{
+  width: 533rpx;
+  height: 280rpx;
+  margin-left: 50rpx;
+}
+#tips .hand{
+  width: 90rpx;
+  height: 91rpx;
+  margin-top: -116rpx;
+  margin-left: 542rpx;
+}
+.expert_logo{
+  width: 363rpx;
+  height: 57rpx;
+  margin-top: 110rpx;
+  margin-left: 36rpx;
+}
+#bottom{
+  margin-top: 30rpx;
+  margin-left: 44rpx;
+}
+.bottom{
+  width: 680rpx;
+  height: 289rpx;
+}
+#bottom .expert_mask{
+  width: 750rpx;
+  height: 359rpx;
+  margin-top: -320rpx;
+  margin-left: -44rpx;
+  position: absolute;
+}
+/* welfare */
+#welfare {
+  position: relative;
+}
+.welfare_bg{
+  width: 750rpx;
+  height: 1071rpx;
+  position: absolute;
+  top: -150rpx;
+  z-index: -1;
+}
+.welfare_icon{
+  width: 601rpx;
+  height: 636rpx;
+  position: absolute;
+  top: 89rpx;
+  left: 60rpx;
+}
+.welfare_box{
+  padding-top: 129px;
+  margin-left: 12px;
+}
+.welfare1{
+  width: 704rpx;
+  height: 317rpx;
+}
 </style>
