@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/demo/main",
+    "pages/random/main",
+    "pages/webview/main",
+    "pages/router/main",
+    "pages/logs/main",
+    "pages/ar/main",
+    "pages/ar2/main",
+    "pages/ar3/main",
+    "pages/ar4/main",
+    "pages/ar5/main",
+    "pages/ar6/main",
+    "pages/ar7/main",
+    "pages/nike/main",
+    "pages/cache/main",
+    "pages/counter/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Random",
+    "navigationBarTextStyle": "black"
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx4f1b24bdc99fa23b",
+    "wx91d27dbf599dff74"
+  ]
+}
